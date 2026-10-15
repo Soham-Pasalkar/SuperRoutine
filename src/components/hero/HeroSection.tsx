@@ -1,6 +1,7 @@
 import React from "react";
 import { HERO_CONTENT } from "@/lib/content";
 import { Button } from "@/components/ui/Button";
+import { HeroCounter } from "@/components/ui/HeroCounter";
 import { HeroStage } from "./HeroStage";
 
 export function HeroSection() {
@@ -20,6 +21,7 @@ export function HeroSection() {
             and no filler. Eight essentials, split into a Day Pack and a Night Pack, so your routine
             is simple and every ingredient has a reason.
           </p>
+          <HeroCounter />
           <div className="cta-row">
             <Button variant="lg" href="#join">
               {HERO_CONTENT.cta} <span aria-hidden="true">→</span>

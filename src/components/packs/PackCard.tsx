@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { Supplement } from "@/lib/supplements";
 import { SupplementTile } from "./SupplementTile";
 
@@ -10,7 +12,12 @@ interface PackCardProps {
 }
 
 export function PackCard({ type, title, goals, supplements }: PackCardProps) {
+  const [openSupplement, setOpenSupplement] = useState<string | null>(null);
   const isDay = type === "day";
+
+  const handleToggle = (name: string) => {
+    setOpenSupplement((prev) => (prev === name ? null : name));
+  };
 
   return (
     <div className={`box ${type}`}>
@@ -47,7 +54,12 @@ export function PackCard({ type, title, goals, supplements }: PackCardProps) {
       </div>
       <div className="supgrid">
         {supplements.map((sup) => (
-          <SupplementTile key={sup.n} supplement={sup} />
+          <SupplementTile
+            key={sup.n}
+            supplement={sup}
+            isOpen={openSupplement === sup.n}
+            onToggle={() => handleToggle(sup.n)}
+          />
         ))}
       </div>
     </div>

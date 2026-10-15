@@ -1,22 +1,36 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Supplement } from "@/lib/supplements";
 import { Pill3D } from "./Pill3D";
 
 interface SupplementTileProps {
   supplement: Supplement;
+  isOpen: boolean;
+  onToggle: () => void;
 }
 
-export function SupplementTile({ supplement }: SupplementTileProps) {
-  const [isOpen, setIsOpen] = useState(false);
+function slugify(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+export function SupplementTile({
+  supplement,
+  isOpen,
+  onToggle,
+}: SupplementTileProps) {
+  const idSlug = slugify(supplement.n);
+  const buttonId = `tile-btn-${idSlug}`;
+  const panelId = `tile-panel-${idSlug}`;
 
   return (
     <div className="sup" data-open={isOpen ? "true" : "false"}>
       <button
+        id={buttonId}
         type="button"
         aria-expanded={isOpen}
-        onClick={() => setIsOpen(!isOpen)}
+        aria-controls={panelId}
+        onClick={onToggle}
       >
         <Pill3D name={supplement.n} />
         <span className="nm">
@@ -36,7 +50,12 @@ export function SupplementTile({ supplement }: SupplementTileProps) {
           <path d="M9 18l6-6-6-6" />
         </svg>
       </button>
-      <div className="sup-b">
+      <div
+        id={panelId}
+        role="region"
+        aria-labelledby={buttonId}
+        className="sup-b"
+      >
         <div>
           <dl>
             <div>

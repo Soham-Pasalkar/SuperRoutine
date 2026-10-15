@@ -651,13 +651,66 @@ h1 .h1d {
   margin: 0;
 }
 
-/* Pill 3D placeholder */
+/* Pill 3D CSS Renderer */
 .pimg {
   position: relative;
   width: 40px;
   height: 30px;
   perspective: 130px;
   flex: none;
+}
+
+.pimg .solid {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(-32deg) rotateY(-30deg);
+  transition: transform 0.3s ease;
+}
+
+.pimg .solid i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: block;
+}
+
+.pimg .solid i.hl {
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 50%;
+  filter: blur(0.4px);
+}
+
+.pimg .sh {
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  bottom: -3px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(6, 22, 59, 0.28);
+  filter: blur(2.5px);
+}
+
+.sup[data-open="true"] .pimg .solid,
+.sup:hover .pimg .solid {
+  animation: rev 5s linear infinite;
+}
+
+@keyframes rev {
+  from {
+    transform: rotateX(-32deg) rotateY(-30deg);
+  }
+  to {
+    transform: rotateX(-32deg) rotateY(330deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sup[data-open="true"] .pimg .solid,
+  .sup:hover .pimg .solid {
+    animation: none;
+  }
 }
 
 @media (max-width: 380px) {

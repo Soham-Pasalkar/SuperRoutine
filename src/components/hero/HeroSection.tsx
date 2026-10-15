@@ -1,7 +1,7 @@
 import React from "react";
 import { HERO_CONTENT } from "@/lib/content";
 import { Button } from "@/components/ui/Button";
-import { HeroPoster } from "./HeroPoster";
+import { HeroStage } from "./HeroStage";
 
 export function HeroSection() {
   return (
@@ -26,7 +26,7 @@ export function HeroSection() {
             </Button>
           </div>
         </div>
-        <HeroPoster />
+        <HeroStage />
       </div>
     </section>
   );

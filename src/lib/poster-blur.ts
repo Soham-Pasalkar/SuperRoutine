@@ -1,0 +1,1 @@
+export const HERO_POSTER_BLUR = "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAABwAQCdASoQAAsABUB8JaACdAFAAAD+6kbpfqEGvouyga8GLbFXvwAA";

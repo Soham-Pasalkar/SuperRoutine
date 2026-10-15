@@ -1,0 +1,155 @@
+{
+  "SUPS": {
+    "night": [
+      {
+        "n": "Magnesium Glycinate",
+        "dose": "1000 mg tablet",
+        "time": "Evening, with or after dinner",
+        "does": "Magnesium helps muscles relax and supports normal nerve function and a calmer evening wind-down.",
+        "form": "Glycinate is magnesium bound to the amino acid glycine. It is gentle on the stomach and absorbs well, unlike magnesium oxide.",
+        "look": "The elemental magnesium amount. The 1000 mg is the glycinate compound, not pure magnesium.",
+        "ev": "Strong for magnesium status; moderate for sleep quality.",
+        "caution": "People with kidney disease should check with a doctor first."
+      },
+      {
+        "n": "Ashwagandha KSM-66",
+        "dose": "600 mg tablet",
+        "time": "Evening",
+        "does": "A traditional adaptogen herb. Studies on KSM-66 root extract show lower perceived stress and better sleep quality in adults.",
+        "form": "KSM-66 is a full-spectrum root extract with published human trials, not leaf or generic powder.",
+        "look": "The extract name, the plant part (root) and the withanolide percentage.",
+        "ev": "Moderate for stress and sleep.",
+        "caution": "Avoid in pregnancy and breastfeeding. Check with a doctor if you have thyroid or autoimmune conditions or take sedatives."
+      },
+      {
+        "n": "Zinc Picolinate",
+        "dose": "30 mg tablet",
+        "time": "Evening, with a light snack",
+        "does": "Supports normal immune function, protein synthesis and recovery. Zinc also contributes to the maintenance of normal testosterone levels.",
+        "form": "Picolinate is a well-absorbed chelated form.",
+        "look": "Elemental zinc in mg.",
+        "ev": "Strong for zinc status and immunity.",
+        "caution": "Long-term high intake can lower copper. Taking it on an empty stomach can cause nausea."
+      },
+      {
+        "n": "Melatonin",
+        "dose": "3 mg tablet",
+        "time": "30 to 60 minutes before bed",
+        "does": "The body's own sleep-timing hormone. Helps with falling asleep, jet lag and shifted sleep schedules.",
+        "form": "3 mg is a widely used dose. More is not better.",
+        "look": "Exact mg per tablet and whether it is immediate or extended release.",
+        "ev": "Strong for sleep timing and jet lag; modest for general insomnia.",
+        "caution": "Can cause drowsiness. Do not drive after taking it. Not for children, pregnancy or breastfeeding without medical advice."
+      }
+    ],
+    "day": [
+      {
+        "n": "Vitamin D3 + K2",
+        "dose": "4000 IU tablet",
+        "time": "Morning, with a meal that has some fat",
+        "does": "Vitamin D3 supports bone, muscle and immune function, and vitamin K2 works alongside it for normal bone health. Low levels of D are common, so a blood test is the best way to know your need.",
+        "form": "D3 (cholecalciferol) raises blood levels more reliably than D2, and K2 is paired with it for bone support.",
+        "look": "D3 in IU and mcg (4000 IU equals 100 mcg) and the K2 amount in mcg.",
+        "ev": "Strong for D3 where blood levels are low; moderate for K2 and bone health.",
+        "caution": "4000 IU is the commonly cited adult upper limit, so do not stack other vitamin D products without a blood test. Vitamin K can interfere with warfarin-type blood thinners, so check with a doctor first."
+      },
+      {
+        "n": "Himalayan Shilajit Gold",
+        "dose": "500 mg capsule",
+        "time": "Morning",
+        "does": "A traditional resin rich in fulvic acid. Small trials suggest support for energy and male vitality.",
+        "form": "Purified shilajit, tested for heavy metals, is the only kind we consider.",
+        "look": "Purification method, fulvic acid percentage and a third-party heavy metal report.",
+        "ev": "Emerging (small studies).",
+        "caution": "Raw, unpurified shilajit can carry heavy metals. Avoid with iron overload conditions unless a doctor approves."
+      },
+      {
+        "n": "Omega-3 Fish Oil",
+        "dose": "1000 mg softgel",
+        "time": "With a main meal",
+        "does": "EPA and DHA support heart, brain and joint health.",
+        "form": "Softgel fish oil in triglyceride form absorbs better with food.",
+        "look": "EPA and DHA in mg separately, not just \"1000 mg fish oil\". Also look for third-party purity testing.",
+        "ev": "Strong for triglycerides and heart health; mixed for mood and focus.",
+        "caution": "Check with a doctor if you take blood thinners or have a fish or shellfish allergy."
+      },
+      {
+        "n": "Vitamin B12",
+        "dose": "200 mcg tablet",
+        "time": "Morning",
+        "does": "Supports energy-yielding metabolism, red blood cells and normal nerve function.",
+        "form": "Methylcobalamin is the active form; cyanocobalamin is the cheaper, stable one. The final form will be stated on the label.",
+        "look": "The form and the dose in mcg.",
+        "ev": "Strong if you are low (vegetarians and vegans especially); little effect if you are not.",
+        "caution": "Metformin and some acid reducers lower B12 levels."
+      }
+    ]
+  },
+  "PILLS": {
+    "Magnesium Glycinate": {
+      "k": "cap",
+      "W": 32,
+      "H": 12,
+      "T": 9,
+      "face": "#FFFFFF",
+      "edge": "#BCC7D8"
+    },
+    "Ashwagandha KSM-66": {
+      "k": "cap",
+      "W": 32,
+      "H": 12,
+      "T": 9,
+      "face": "#E6CFA6",
+      "edge": "#8A6438",
+      "dots": 1
+    },
+    "Zinc Picolinate": {
+      "k": "disc",
+      "W": 22,
+      "H": 22,
+      "T": 8,
+      "face": "#FFFFFF",
+      "edge": "#B9C4D5"
+    },
+    "Melatonin": {
+      "k": "disc",
+      "W": 18,
+      "H": 18,
+      "T": 7,
+      "face": "#F6F0FF",
+      "edge": "#9E89D0"
+    },
+    "Vitamin D3 + K2": {
+      "k": "cap",
+      "W": 32,
+      "H": 12,
+      "T": 9,
+      "face": "#FFF4C4",
+      "edge": "#D2AE3A"
+    },
+    "Himalayan Shilajit Gold": {
+      "k": "caps",
+      "W": 34,
+      "H": 13,
+      "T": 13,
+      "face": "#5C657E",
+      "edge": "#05070C"
+    },
+    "Omega-3 Fish Oil": {
+      "k": "gel",
+      "W": 30,
+      "H": 20,
+      "T": 14,
+      "face": "#FFEDB0",
+      "edge": "#B26F05"
+    },
+    "Vitamin B12": {
+      "k": "disc",
+      "W": 20,
+      "H": 20,
+      "T": 8,
+      "face": "#FFCBD1",
+      "edge": "#AE3043"
+    }
+  }
+}

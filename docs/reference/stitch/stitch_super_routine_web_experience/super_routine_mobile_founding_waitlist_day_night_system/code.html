@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>Overview - Super Routine</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "inverse-primary": "#b5c5f9", "accent-light": "#2F5BD6", "primary-fixed": "#dae2ff", "primary": "#00020b", "secondary-container": "#436ce7", "on-error": "#ffffff", "ink-dark": "#F4F7FC", "inverse-on-surface": "#e7f2fd", "card-light": "#F3F8FD", "inverse-surface": "#27323a", "on-surface-variant": "#45464f", "on-surface": "#121d24", "outline-variant": "#c5c6d0", "surface-bright": "#f6faff", "surface-container-low": "#ebf5ff", "line-light": "#C4D8EE", "night-gradient-start": "#0B1226", "surface-container-highest": "#d9e4ef", "outline": "#757780", "card-dark": "#111C36", "bg-dark": "#0A1226", "on-secondary": "#ffffff", "background": "#f6faff", "primary-fixed-dim": "#b5c5f9", "on-tertiary": "#ffffff", "btn-bg": "#06163B", "on-secondary-fixed-variant": "#003baf", "line-dark": "#22304F", "on-tertiary-fixed-variant": "#224290", "ink-light": "#061A44", "on-error-container": "#93000a", "primary-container": "#061a44", "surface-container": "#e4effa", "error-container": "#ffdad6", "day-gradient-start": "#A9CBEF", "surface": "#f6faff", "night-gradient-end": "#16244A", "accent-dark": "#8EAAFF", "day-gradient-end": "#CFE2F6", "on-background": "#121d24", "tertiary-fixed-dim": "#b3c5ff", "navy-deep": "#0B2654", "mute-light": "#1C2434", "surface-variant": "#d9e4ef", "surface-container-high": "#dee9f4", "tertiary-container": "#00184c", "on-primary-fixed": "#051943", "mute-dark": "#9AA6BC", "error": "#ba1a1a", "on-primary-container": "#7383b3", "bg-light": "#E3EEF9", "secondary": "#2251cd", "on-tertiary-container": "#6581d3", "tertiary-fixed": "#dbe1ff", "on-secondary-container": "#fffbff", "surface-dim": "#d0dbe6", "on-tertiary-fixed": "#00174a", "secondary-fixed-dim": "#b6c4ff", "on-secondary-fixed": "#00164e", "surface-tint": "#4d5d8a", "dim-dark": "#6D7B9A", "surface-container-lowest": "#ffffff", "secondary-fixed": "#dce1ff", "dim-light": "#6F8FCB", "tertiary": "#00010b", "on-primary": "#ffffff", "on-primary-fixed-variant": "#354571" }, borderRadius: { DEFAULT: "1rem", lg: "2rem", xl: "3rem", full: "9999px" }, spacing: { "space-md": "1rem", "margin": "1.5rem", "space-2xl": "4rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "space-3xl": "6rem", "space-xl": "2.5rem", "gutter": "1.5rem", "space-sm": "0.5rem", "gutter-mobile": "1rem", "margin-mobile": "1.25rem" }, fontFamily: { "body-md": ["Inter"], "headline-sm": ["Inter"], "label-button": ["Inter"], "lead": ["Inter"], "label-eyebrow": ["Manrope"], "body-sm": ["Inter"], "display-hero": ["Inter"], "label-chip": ["Manrope"], "display-hero-mobile": ["Inter"], "headline-lg-mobile": ["Inter"], "headline-lg": ["Inter"], "headline-md": ["Inter"] }, fontSize: { "body-md": ["1rem", { lineHeight: "1.55", letterSpacing: "0em", fontWeight: "400" }], "headline-sm": ["1.35rem", { lineHeight: "1.25", letterSpacing: "-0.015em", fontWeight: "600" }], "label-button": ["0.95rem", { lineHeight: "1.0", letterSpacing: "-0.01em", fontWeight: "600" }], "lead": ["1.2rem", { lineHeight: "1.55", letterSpacing: "-0.01em", fontWeight: "400" }], "label-eyebrow": ["0.72rem", { lineHeight: "1.2", letterSpacing: "0.18em", fontWeight: "700" }], "body-sm": ["0.875rem", { lineHeight: "1.5", letterSpacing: "0em", fontWeight: "400" }], "display-hero": ["4.9rem", { lineHeight: "1.02", letterSpacing: "-0.045em", fontWeight: "700" }], "label-chip": ["0.75rem", { lineHeight: "1.0", letterSpacing: "0.08em", fontWeight: "700" }], "display-hero-mobile": ["2.5rem", { lineHeight: "1.08", letterSpacing: "-0.04em", fontWeight: "700" }], "headline-lg-mobile": ["2.1rem", { lineHeight: "1.1", letterSpacing: "-0.035em", fontWeight: "700" }], "headline-lg": ["3.7rem", { lineHeight: "1.02", letterSpacing: "-0.045em", fontWeight: "700" }], "headline-md": ["2rem", { lineHeight: "1.15", letterSpacing: "-0.025em", fontWeight: "600" }] } } } };</script><style>@layer base { html, body { width: 100vw; margin: 0; padding: 0; background-color: #E3EEF9; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style></head><body class="bg-bg-light text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 pt-safe px-margin-mobile pointer-events-none"><div class="h-20 w-full flex items-center justify-center"><div class="pointer-events-auto w-full max-w-sm h-14 bg-bg-light/80 backdrop-blur-xl rounded-full px-space-md flex items-center justify-between shadow-[0_12px_36px_rgba(6,26,68,0.08)]"><div class="flex items-center gap-space-xs"><div class="w-8 h-8 rounded-full bg-navy-deep flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[18px]">wb_twilight</span></div><span class="font-label-eyebrow text-label-eyebrow uppercase text-navy-deep">SUPER ROUTINE</span></div><div class="flex items-center gap-space-sm"><a class="h-9 px-space-md rounded-full bg-btn-bg text-ink-dark font-label-button text-label-button flex items-center justify-center transition-transform active:scale-95 shadow-[0_4px_12px_rgba(6,22,59,0.25)]" href="#join"><span>Vote</span><span class="material-symbols-outlined text-[16px] ml-1">arrow_forward</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-20 pb-24 bg-bg-light"><div class="flex flex-col w-full text-on-surface overflow-x-hidden">
+<!-- HERO SECTION -->
+<section class="px-margin-mobile pt-space-md pb-space-xl flex flex-col items-center text-center">
+<!-- Eyebrow Badge -->
+<div class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container shadow-sm mb-space-md">
+<span class="w-2 h-2 rounded-full bg-accent-light animate-pulse"></span>
+<span class="font-label-eyebrow text-label-eyebrow uppercase text-navy-deep tracking-widest">01 / BIO-FACT CLINICAL SYSTEM</span>
+</div>
+<!-- Main Headline Mobile Stack -->
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-navy-deep tracking-tight mb-space-sm max-w-sm">
+      Complete Day &amp; Night Supplement System.
+    </h1>
+<h2 class="font-headline-sm text-headline-sm text-on-surface-variant font-medium mb-space-xs">
+      8 Essential Nutrients. 2 Simple Packs.
+    </h2>
+<div class="font-headline-md text-headline-md mb-space-md tracking-tight font-bold">
+      Daily Routine made 
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent-light">Super Routine!</span>
+</div>
+<!-- Lead Copy -->
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-space-lg text-balance">
+      Super Routine is a day and night supplement system built around clean labels, exact doses, bioavailable forms and no filler. Eight essentials, split into a Day Pack and a Night Pack, so your routine is simple and every ingredient has a reason.
+    </p>
+<!-- Primary Pill CTA Button -->
+<a class="w-full max-w-xs h-14 rounded-full bg-btn-bg text-ink-dark font-label-button text-label-button flex items-center justify-center gap-space-xs shadow-xl active:scale-95 transition-all mb-space-sm group" href="#join">
+<span>Join the Founding Waitlist</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<!-- Trust Indicator Badge -->
+<div class="flex items-center gap-space-xs text-on-surface-variant mb-space-xl">
+<span class="material-symbols-outlined text-accent-light text-[18px]">verified</span>
+<span class="font-label-chip text-label-chip uppercase tracking-wider text-[0.7rem]">Validated by clinical biochemists • 0 synthetic binders</span>
+</div>
+<!-- Cinematic Hero Product Stage (375x812 Optimized) -->
+<div class="w-full rounded-lg bg-bg-dark text-ink-dark p-space-sm pt-space-md shadow-2xl relative overflow-hidden flex flex-col items-center">
+<!-- Ambient Glow Behind Packet -->
+<div class="absolute -top-12 -left-12 w-48 h-48 bg-secondary/30 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/2 -right-12 w-48 h-48 bg-accent-dark/20 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Live Sachet Burst Image Container -->
+<div class="relative w-full aspect-[4/3] rounded-DEFAULT overflow-hidden flex items-center justify-center bg-card-dark">
+<img class="w-full h-full object-cover select-none" data-alt="Cinematic studio shot of Super Routine Day Essentials packet on dark slate background. A metallic silvery-blue foil sachet is cleanly torn open at an angle, bursting outward with glossy golden omega-3 softgels, speckled herbal shilajit tablets, translucent amber capsules and clean off-white vitamins suspended in a dynamic zero-gravity arc with crisp directional lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa3V5DJUC5spqwlmBdLkTH5UGEhDYXF1aQiS7P8q1wU-DZwZk69PC0tgkZrMCI92-6MPZYyhVXO6N970D6Lmfgf5xmCFW-6PnkBQe7xcsL6Jn8yB9eONdYx_681GzorFlEcRspI-VE4mfoclRQiD5UpblT23Bd-pTryDo2dcX2gwV1vtwsXehgyIlmyAO1Eg8i_BhXF70m4nvlDMZEKxEyhAw8LwZng1WtIizArG6nQBAZAKv32GJw"/>
+<div class="absolute bottom-2 left-3 px-space-sm py-space-xs rounded-full bg-bg-dark/80 backdrop-blur-md">
+<span class="font-label-eyebrow text-[0.65rem] text-accent-dark tracking-widest uppercase">PRECISION BURST STAGE</span>
+</div>
+</div>
+<!-- Interactive 5-Stage Motion Pills Filter -->
+<div class="w-full mt-space-md overflow-x-auto pb-space-xs">
+<div class="flex items-center gap-space-xs min-w-max px-space-xs" id="stagePillSelector">
+<button class="stage-pill px-space-sm py-1.5 rounded-full bg-accent-light text-on-primary font-label-chip text-[0.68rem] tracking-wider transition-all" data-stage="1" type="button">01 SEALED</button>
+<button class="stage-pill px-space-sm py-1.5 rounded-full bg-card-dark text-mute-dark font-label-chip text-[0.68rem] tracking-wider transition-all" data-stage="2" type="button">02 TEAR</button>
+<button class="stage-pill px-space-sm py-1.5 rounded-full bg-card-dark text-mute-dark font-label-chip text-[0.68rem] tracking-wider transition-all" data-stage="3" type="button">03 RELEASE</button>
+<button class="stage-pill px-space-sm py-1.5 rounded-full bg-card-dark text-mute-dark font-label-chip text-[0.68rem] tracking-wider transition-all" data-stage="4" type="button">04 EXPLODED</button>
+<button class="stage-pill px-space-sm py-1.5 rounded-full bg-card-dark text-mute-dark font-label-chip text-[0.68rem] tracking-wider transition-all" data-stage="5" type="button">05 HOLD</button>
+</div>
+</div>
+<p class="font-body-sm text-[0.75rem] text-mute-dark mt-space-xs mb-1" id="stageFeedback">
+        Stage 01: Sachet sealed with nitrogen barrier protection.
+      </p>
+</div>
+</section>
+<!-- SECTION 01: THE SUPER ROUTINE (CIRCADIAN PACKS) -->
+<section class="px-margin-mobile py-space-xl flex flex-col gap-space-lg">
+<!-- Intro Block -->
+<div class="flex flex-col">
+<div class="inline-flex items-center gap-1 font-label-eyebrow text-label-eyebrow uppercase text-secondary tracking-widest mb-space-xs">
+<span>02 // CIRCADIAN ARCHITECTURE</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-navy-deep tracking-tight mb-space-xs">
+        Two Packs. One for Day. One for Night.
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Exact, uncompromised formulations calibrated to natural biorhythms. 30 morning sachets engineered for cellular drive, 30 evening sachets for restorative neuromuscular recovery.
+      </p>
+</div>
+<!-- DAY PACK CARD -->
+<div class="w-full rounded-lg bg-gradient-to-br from-day-gradient-start to-day-gradient-end p-space-md text-navy-deep shadow-lg flex flex-col gap-space-md relative overflow-hidden">
+<!-- Glow Decor -->
+<div class="absolute -right-12 -top-12 w-40 h-40 bg-surface-bright/40 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Pack Header -->
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-accent-light mb-space-xs">
+<span class="material-symbols-outlined text-[24px]">wb_sunny</span>
+<span class="font-label-chip text-label-chip uppercase tracking-wider">MORNING ACTIVATION</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm tracking-tight font-bold text-navy-deep">Day Pack Essentials</h3>
+<span class="font-body-sm text-[0.8rem] text-on-surface-variant font-medium">Energy • Focus • Cellular Strength</span>
+</div>
+<div class="px-space-sm py-1 rounded-full bg-surface-bright/70 backdrop-blur-sm text-navy-deep font-label-chip text-[0.7rem] uppercase tracking-wider">
+          4 Actives
+        </div>
+</div>
+<!-- Actives List (Interactive Accordion) -->
+<div class="flex flex-col gap-space-sm" id="dayAccordion">
+<!-- Day Item 1 -->
+<div class="rounded bg-surface-bright/85 backdrop-blur-sm overflow-hidden shadow-sm transition-all">
+<button class="w-full p-space-sm flex items-center justify-between text-left accordion-trigger" data-target="day-1" type="button">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-accent-light flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">wb_twilight</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-button text-label-button text-navy-deep">Vitamin D3 + K2 (MK-7)</span>
+<span class="font-body-sm text-[0.75rem] text-on-surface-variant">4000 IU / 100 mcg + 100 mcg</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-accent-light transition-transform duration-200 chevron">expand_more</span>
+</button>
+<div class="hidden px-space-sm pb-space-sm text-on-surface-variant font-body-sm text-[0.8rem]" id="day-1">
+            Formulated in bioactive vegan cholecalciferol with all-trans MK-7 for targeted arterial clearance and maximum bone calcium uptake.
+          </div>
+</div>
+<!-- Day Item 2 -->
+<div class="rounded bg-surface-bright/85 backdrop-blur-sm overflow-hidden shadow-sm transition-all">
+<button class="w-full p-space-sm flex items-center justify-between text-left accordion-trigger" data-target="day-2" type="button">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-accent-light flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">landscape</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-button text-label-button text-navy-deep">Himalayan Shilajit Gold</span>
+<span class="font-body-sm text-[0.75rem] text-on-surface-variant">500 mg • 60% Fulvic Acid</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-accent-light transition-transform duration-200 chevron">expand_more</span>
+</button>
+<div class="hidden px-space-sm pb-space-sm text-on-surface-variant font-body-sm text-[0.8rem]" id="day-2">
+            High-altitude purified resin rich in 84+ ionic trace minerals to support mitochondrial ATP generation and clean energy stamina.
+          </div>
+</div>
+<!-- Day Item 3 -->
+<div class="rounded bg-surface-bright/85 backdrop-blur-sm overflow-hidden shadow-sm transition-all">
+<button class="w-full p-space-sm flex items-center justify-between text-left accordion-trigger" data-target="day-3" type="button">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-accent-light flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">water_drop</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-button text-label-button text-navy-deep">Omega-3 Triglyceride</span>
+<span class="font-body-sm text-[0.75rem] text-on-surface-variant">1000 mg (400 EPA / 300 DHA)</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-accent-light transition-transform duration-200 chevron">expand_more</span>
+</button>
+<div class="hidden px-space-sm pb-space-sm text-on-surface-variant font-body-sm text-[0.8rem]" id="day-3">
+            Enzymatically re-esterified wild fish oil in pure triglyceride (rTG) form for 70% higher bioavailability and zero enteric burp back.
+          </div>
+</div>
+<!-- Day Item 4 -->
+<div class="rounded bg-surface-bright/85 backdrop-blur-sm overflow-hidden shadow-sm transition-all">
+<button class="w-full p-space-sm flex items-center justify-between text-left accordion-trigger" data-target="day-4" type="button">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-accent-light flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-button text-label-button text-navy-deep">Active Vitamin B12</span>
+<span class="font-body-sm text-[0.75rem] text-on-surface-variant">Methylcobalamin 200 mcg</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-accent-light transition-transform duration-200 chevron">expand_more</span>
+</button>
+<div class="hidden px-space-sm pb-space-sm text-on-surface-variant font-body-sm text-[0.8rem]" id="day-4">
+            Pre-methylated active cellular cofactor directly usable by methylation pathways without genetic liver conversion friction.
+          </div>
+</div>
+</div>
+</div>
+<!-- NIGHT PACK CARD -->
+<div class="w-full rounded-lg bg-gradient-to-br from-night-gradient-start to-night-gradient-end p-space-md text-ink-dark shadow-xl flex flex-col gap-space-md relative overflow-hidden">
+<!-- Ambient Night Glow -->
+<div class="absolute -right-12 -bottom-12 w-44 h-44 bg-accent-light/20 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Pack Header -->
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-accent-dark mb-space-xs">
+<span class="material-symbols-outlined text-[24px]">bedtime</span>
+<span class="font-label-chip text-label-chip uppercase tracking-wider text-accent-dark">EVENING RESTORATION</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm tracking-tight font-bold text-ink-dark">Night Pack Essentials</h3>
+<span class="font-body-sm text-[0.8rem] text-mute-dark font-medium">Recover • Deep Sleep • Muscular Relax</span>
+</div>
+<div class="px-space-sm py-1 rounded-full bg-card-dark text-accent-dark font-label-chip text-[0.7rem] uppercase tracking-wider">
+          4 Actives
+        </div>
+</div>
+<!-- Actives List (Interactive Accordion) -->
+<div class="flex flex-col gap-space-sm" id="nightAccordion">
+<!-- Night Item 1 -->
+<div class="rounded bg-card-dark/90 overflow-hidden shadow-sm transition-all">
+<button class="w-full p-space-sm flex items-center justify-between text-left accordion-trigger" data-target="night-1" type="button">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-navy-deep flex items-center justify-center text-accent-dark flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">spa</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-button text-label-button text-ink-dark">Magnesium Bisglycinate</span>
+<span class="font-body-sm text-[0.75rem] text-mute-dark">1000 mg (200 mg Elemental)</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-accent-dark transition-transform duration-200 chevron">expand_more</span>
+</button>
+<div class="hidden px-space-sm pb-space-sm text-mute-dark font-body-sm text-[0.8rem]" id="night-1">
+            TRAACS® amino acid chelate cross-linked with glycine for high GI absorption, calming the central nervous system without laxative distress.
+          </div>
+</div>
+<!-- Night Item 2 -->
+<div class="rounded bg-card-dark/90 overflow-hidden shadow-sm transition-all">
+<button class="w-full p-space-sm flex items-center justify-between text-left accordion-trigger" data-target="night-2" type="button">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-navy-deep flex items-center justify-center text-accent-dark flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">psychology</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-button text-label-button text-ink-dark">Ashwagandha KSM-66®</span>
+<span class="font-body-sm text-[0.75rem] text-mute-dark">600 mg • 5% Withanolides</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-accent-dark transition-transform duration-200 chevron">expand_more</span>
+</button>
+<div class="hidden px-space-sm pb-space-sm text-mute-dark font-body-sm text-[0.8rem]" id="night-2">
+            Full-spectrum organic root extract clinically verified to reduce serum cortisol levels and buffer evening mental racing.
+          </div>
+</div>
+<!-- Night Item 3 -->
+<div class="rounded bg-card-dark/90 overflow-hidden shadow-sm transition-all">
+<button class="w-full p-space-sm flex items-center justify-between text-left accordion-trigger" data-target="night-3" type="button">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-navy-deep flex items-center justify-center text-accent-dark flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-button text-label-button text-ink-dark">Zinc Picolinate</span>
+<span class="font-body-sm text-[0.75rem] text-mute-dark">30 mg Chelate</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-accent-dark transition-transform duration-200 chevron">expand_more</span>
+</button>
+<div class="hidden px-space-sm pb-space-sm text-mute-dark font-body-sm text-[0.8rem]" id="night-3">
+            Organic acid-bound zinc salt providing superior membrane transport for nighttime cellular tissue repair and immune synthesis.
+          </div>
+</div>
+<!-- Night Item 4 -->
+<div class="rounded bg-card-dark/90 overflow-hidden shadow-sm transition-all">
+<button class="w-full p-space-sm flex items-center justify-between text-left accordion-trigger" data-target="night-4" type="button">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-navy-deep flex items-center justify-center text-accent-dark flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">nights_stay</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-button text-label-button text-ink-dark">Micro-Dosed Melatonin</span>
+<span class="font-body-sm text-[0.75rem] text-mute-dark">3 mg Pulsed Release</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[20px] text-accent-dark transition-transform duration-200 chevron">expand_more</span>
+</button>
+<div class="hidden px-space-sm pb-space-sm text-mute-dark font-body-sm text-[0.8rem]" id="night-4">
+            Dual-phase botanical micro-dose that signals the pineal gland without triggering receptor downregulation or morning grogginess.
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 02: OUR APPROACH -->
+<section class="px-margin-mobile py-space-xl flex flex-col gap-space-md">
+<div class="flex flex-col">
+<div class="font-label-eyebrow text-label-eyebrow uppercase text-secondary tracking-widest mb-space-xs">
+        03 // PHILOSOPHY
+      </div>
+<h2 class="font-headline-md text-headline-md text-navy-deep tracking-tight">
+        Supplements, built the way they should have been all along.
+      </h2>
+</div>
+<!-- 4 Principles Stacked Vertically for Mobile -->
+<div class="flex flex-col gap-space-sm mt-space-xs">
+<!-- Principle 1 -->
+<div class="p-space-md rounded-lg bg-card-light shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-button text-label-button text-navy-deep uppercase tracking-wider">Clean</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Zero magnesium stearate, artificial food colorings, titanium dioxide, talc, or bulk industrial flow agents.
+        </p>
+</div>
+<!-- Principle 2 -->
+<div class="p-space-md rounded-lg bg-card-light shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-accent-light"></span>
+<span class="font-label-button text-label-button text-navy-deep uppercase tracking-wider">Transparent</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Complete disclosure of ingredient origins, specific chemical forms, patent numbers, and exact milligrams. No proprietary blends.
+        </p>
+</div>
+<!-- Principle 3 -->
+<div class="p-space-md rounded-lg bg-card-light shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-navy-deep"></span>
+<span class="font-label-button text-label-button text-navy-deep uppercase tracking-wider">Evidence-Led</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Every active compound is clinically verified by double-blind, human clinical trials at therapeutic dosages.
+        </p>
+</div>
+<!-- Principle 4 -->
+<div class="p-space-md rounded-lg bg-card-light shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-accent-dark"></span>
+<span class="font-label-button text-label-button text-navy-deep uppercase tracking-wider">Honest</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          No unrealistic panaceas. We offer pure cellular foundational support designed to be stacked effortlessly with real food and sleep.
+        </p>
+</div>
+</div>
+</section>
+<!-- SECTION 03: THE BUILD (BUILDING IN PUBLIC) -->
+<section class="px-margin-mobile py-space-xl flex flex-col gap-space-lg">
+<div class="flex flex-col">
+<div class="font-label-eyebrow text-label-eyebrow uppercase text-secondary tracking-widest mb-space-xs">
+        04 // ROADMAP
+      </div>
+<h2 class="font-headline-md text-headline-md text-navy-deep tracking-tight mb-space-xs">
+        We are building this in public.
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Follow every phase of our formulation, batch assay tests, and blister packaging runs directly from lab to finished pouch.
+      </p>
+</div>
+<!-- Vertical Timeline with Connected Circular Badges -->
+<div class="relative pl-6 flex flex-col gap-space-lg before:content-[''] before:absolute before:left-3.5 before:top-3 before:bottom-3 before:w-0.5 before:bg-line-light">
+<!-- Node 01: Completed -->
+<div class="relative flex flex-col gap-space-xs">
+<div class="absolute -left-6 top-0 w-7 h-7 rounded-full bg-secondary text-on-primary flex items-center justify-center font-label-chip text-[0.7rem] shadow-md ring-4 ring-bg-light">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-eyebrow text-[0.68rem] text-secondary tracking-wider uppercase">01 COMPLETED</span>
+<span class="font-label-chip text-[0.65rem] text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-full">NOV 2024</span>
+</div>
+<span class="font-label-button text-label-button text-navy-deep">The Problem Discovery</span>
+<p class="font-body-sm text-[0.8rem] text-on-surface-variant">
+          Surveyed 1,400 daily supplement consumers to decode compliance drop-offs, pill fatigue, and synthetic filler sensitivity.
+        </p>
+</div>
+<!-- Node 02: Active -->
+<div class="relative flex flex-col gap-space-xs">
+<div class="absolute -left-6 top-0 w-7 h-7 rounded-full bg-btn-bg text-ink-dark flex items-center justify-center font-label-chip text-[0.7rem] shadow-md ring-4 ring-bg-light animate-pulse">
+          02
+        </div>
+<div class="flex items-center justify-between">
+<span class="font-label-eyebrow text-[0.68rem] text-accent-light tracking-wider uppercase font-bold">02 IN PROGRESS</span>
+<span class="font-label-chip text-[0.65rem] text-navy-deep bg-secondary-fixed px-2 py-0.5 rounded-full font-bold">CURRENT</span>
+</div>
+<span class="font-label-button text-label-button text-navy-deep">Biochemical Research &amp; Synergies</span>
+<p class="font-body-sm text-[0.8rem] text-on-surface-variant">
+          Mapping competition between minerals (e.g., zinc vs copper) to divide nutrients into complementary circadian release intervals.
+        </p>
+</div>
+<!-- Node 03: Active -->
+<div class="relative flex flex-col gap-space-xs">
+<div class="absolute -left-6 top-0 w-7 h-7 rounded-full bg-btn-bg text-ink-dark flex items-center justify-center font-label-chip text-[0.7rem] shadow-md ring-4 ring-bg-light">
+          03
+        </div>
+<div class="flex items-center justify-between">
+<span class="font-label-eyebrow text-[0.68rem] text-accent-light tracking-wider uppercase font-bold">03 IN PROGRESS</span>
+<span class="font-label-chip text-[0.65rem] text-navy-deep bg-secondary-fixed px-2 py-0.5 rounded-full font-bold">ACTIVE</span>
+</div>
+<span class="font-label-button text-label-button text-navy-deep">Sachet Formulation &amp; Oxygen Seal</span>
+<p class="font-body-sm text-[0.8rem] text-on-surface-variant">
+          Testing multi-barrier nitrogen flushed metallic pouches to protect high-potency Omega-3s against oxidative rancidity.
+        </p>
+</div>
+<!-- Node 04: Upcoming -->
+<div class="relative flex flex-col gap-space-xs opacity-75">
+<div class="absolute -left-6 top-0 w-7 h-7 rounded-full bg-surface-container text-dim-light flex items-center justify-center font-label-chip text-[0.7rem] shadow-sm ring-4 ring-bg-light">
+          04
+        </div>
+<div class="flex items-center justify-between">
+<span class="font-label-eyebrow text-[0.68rem] text-on-surface-variant tracking-wider uppercase">04 UPCOMING</span>
+<span class="font-label-chip text-[0.65rem] text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-full">Q2 2025</span>
+</div>
+<span class="font-label-button text-label-button text-navy-deep">Third-Party Heavy Metal &amp; Purity Assay</span>
+<p class="font-body-sm text-[0.8rem] text-on-surface-variant">
+          Independent Eurofins certification for heavy metals, micro-contaminants, and exact active molecule potency checks.
+        </p>
+</div>
+<!-- Node 05: Launch -->
+<div class="relative flex flex-col gap-space-xs opacity-75">
+<div class="absolute -left-6 top-0 w-7 h-7 rounded-full bg-surface-container text-dim-light flex items-center justify-center font-label-chip text-[0.7rem] shadow-sm ring-4 ring-bg-light">
+          05
+        </div>
+<div class="flex items-center justify-between">
+<span class="font-label-eyebrow text-[0.68rem] text-on-surface-variant tracking-wider uppercase">05 LAUNCH</span>
+<span class="font-label-chip text-[0.65rem] text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-full">FOUNDING DROP</span>
+</div>
+<span class="font-label-button text-label-button text-navy-deep">Batch 001 Release to Founding 1,000</span>
+<p class="font-body-sm text-[0.8rem] text-on-surface-variant">
+          Direct dispatch to waitlist priority members with locked-in charter tier pricing and founder's metallic case.
+        </p>
+</div>
+</div>
+</section>
+<!-- SECTION 04: FOUNDING MEMBER ACCESS -->
+<section class="px-margin-mobile py-space-xl flex flex-col gap-space-md">
+<div class="flex flex-col">
+<div class="font-label-eyebrow text-label-eyebrow uppercase text-secondary tracking-widest mb-space-xs">
+        05 // PRIVILEGES
+      </div>
+<h2 class="font-headline-md text-headline-md text-navy-deep tracking-tight mb-space-xs">
+        More than Early Access.
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Our founding members co-create this formula. You get permanent benefits that will never be offered to retail subscribers.
+      </p>
+</div>
+<!-- 6 Stacked Benefit Cards -->
+<div class="grid grid-cols-1 gap-space-sm">
+<div class="p-space-md rounded-lg bg-card-light shadow-sm flex items-start gap-space-sm">
+<span class="font-label-chip text-secondary text-label-chip font-bold">01</span>
+<div class="flex flex-col">
+<span class="font-label-button text-label-button text-navy-deep">24-Hour Headstart</span>
+<span class="font-body-sm text-[0.8rem] text-on-surface-variant">Secured inventory slot before public launch batch runs out.</span>
+</div>
+</div>
+<div class="p-space-md rounded-lg bg-card-light shadow-sm flex items-start gap-space-sm">
+<span class="font-label-chip text-secondary text-label-chip font-bold">02</span>
+<div class="flex flex-col">
+<span class="font-label-button text-label-button text-navy-deep">Founding Lifetime Price</span>
+<span class="font-body-sm text-[0.8rem] text-on-surface-variant">Locked-in foundational price never affected by inflation updates.</span>
+</div>
+</div>
+<div class="p-space-md rounded-lg bg-card-light shadow-sm flex items-start gap-space-sm">
+<span class="font-label-chip text-secondary text-label-chip font-bold">03</span>
+<div class="flex flex-col">
+<span class="font-label-button text-label-button text-navy-deep">Behind Formulation</span>
+<span class="font-body-sm text-[0.8rem] text-on-surface-variant">Direct access to private lab logs, biochemical notes &amp; testing sheets.</span>
+</div>
+</div>
+<div class="p-space-md rounded-lg bg-card-light shadow-sm flex items-start gap-space-sm">
+<span class="font-label-chip text-secondary text-label-chip font-bold">04</span>
+<div class="flex flex-col">
+<span class="font-label-button text-label-button text-navy-deep">Product Voting Power</span>
+<span class="font-body-sm text-[0.8rem] text-on-surface-variant">Vote on future pipeline ingredients, flavor profiles and sachet materials.</span>
+</div>
+</div>
+<div class="p-space-md rounded-lg bg-card-light shadow-sm flex items-start gap-space-sm">
+<span class="font-label-chip text-secondary text-label-chip font-bold">05</span>
+<div class="flex flex-col">
+<span class="font-label-button text-label-button text-navy-deep">Priority Restock Allocation</span>
+<span class="font-body-sm text-[0.8rem] text-on-surface-variant">Guaranteed recurring monthly sachet delivery with zero stockouts.</span>
+</div>
+</div>
+<div class="p-space-md rounded-lg bg-card-light shadow-sm flex items-start gap-space-sm">
+<span class="font-label-chip text-secondary text-label-chip font-bold">06</span>
+<div class="flex flex-col">
+<span class="font-label-button text-label-button text-navy-deep">Know First via Direct Dispatch</span>
+<span class="font-body-sm text-[0.8rem] text-on-surface-variant">Zero marketing spam. Only milestone alerts and shipment tracking.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 05: COMMUNITY PACKAGING VOTE & WAITLIST (#join) -->
+<section class="px-margin-mobile py-space-xl flex flex-col items-center" id="join">
+<!-- Deep Navy Full-Bleed Container -->
+<div class="w-full rounded-xl bg-gradient-to-b from-navy-deep to-primary-container p-space-md shadow-2xl flex flex-col gap-space-lg text-ink-dark">
+<!-- Vote Intro Header -->
+<div class="flex flex-col text-center items-center">
+<div class="inline-flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-accent-light/20 text-accent-dark font-label-chip text-[0.68rem] tracking-wider uppercase mb-space-xs">
+<span>CO-FOUNDER BALLOT</span>
+</div>
+<h2 class="font-headline-md text-headline-md tracking-tight font-bold text-ink-dark">
+          Shape Batch 001.
+        </h2>
+<p class="font-body-sm text-body-sm text-mute-dark max-w-xs mt-space-xs">
+          Vote on packaging design and unlock your guaranteed early member price before release.
+        </p>
+</div>
+<!-- Progressive Form Container -->
+<form class="flex flex-col gap-space-lg" id="voteWaitlistForm" onsubmit="event.preventDefault(); handleWaitlistSubmit();">
+<!-- Question 1: Packaging Preference -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-eyebrow text-label-eyebrow text-accent-dark uppercase tracking-wider">QUESTION 1 OF 4</span>
+<span class="font-label-chip text-[0.65rem] text-mute-dark">Tap to choose</span>
+</div>
+<span class="font-label-button text-label-button text-ink-dark">Which packaging do you prefer?</span>
+<!-- Option A -->
+<label class="pack-option relative flex items-start gap-space-sm p-space-md rounded-lg bg-card-dark text-ink-dark cursor-pointer transition-all has-[:checked]:bg-secondary/20 shadow-sm">
+<input checked="" class="mt-1 accent-accent-light" name="packagingOption" type="radio" value="option_a"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs mb-1">
+<span class="material-symbols-outlined text-accent-dark text-[18px]">view_column</span>
+<span class="font-label-button text-label-button text-ink-dark">Option A: Info-first Pack</span>
+</div>
+<span class="font-body-sm text-[0.8rem] text-mute-dark">
+                Ingredients, exact chemical forms and precise doses printed large on the front. Ultra-functional, like a high-end apothecary label.
+              </span>
+</div>
+</label>
+<!-- Option B -->
+<label class="pack-option relative flex items-start gap-space-sm p-space-md rounded-lg bg-card-dark text-ink-dark cursor-pointer transition-all has-[:checked]:bg-secondary/20 shadow-sm">
+<input class="mt-1 accent-accent-light" name="packagingOption" type="radio" value="option_b"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs mb-1">
+<span class="material-symbols-outlined text-accent-dark text-[18px]">filter_vintage</span>
+<span class="font-label-button text-label-button text-ink-dark">Option B: Designer Minimalist</span>
+</div>
+<span class="font-body-sm text-[0.8rem] text-mute-dark">
+                Ultra-restrained matte metallic face on front with tactile embossed wordmark; regulatory clinical facts relegated to reverse.
+              </span>
+</div>
+</label>
+</div>
+<!-- Question 2: Fair Value Price Slider -->
+<div class="flex flex-col gap-space-sm p-space-md rounded-lg bg-card-dark">
+<div class="flex items-center justify-between">
+<span class="font-label-eyebrow text-label-eyebrow text-accent-dark uppercase tracking-wider">QUESTION 2 OF 4</span>
+<span class="font-label-chip text-[0.7rem] text-accent-dark font-bold" id="priceDisplay">₹2,200</span>
+</div>
+<span class="font-label-button text-label-button text-ink-dark">Target monthly price for 60 sachets</span>
+<span class="font-body-sm text-[0.75rem] text-mute-dark">
+            Benchmarked against ₹3,000+ if buying 8 standalone single-ingredient bottles.
+          </span>
+<input class="w-full accent-accent-light cursor-pointer mt-space-xs" id="priceSlider" max="3300" min="1200" oninput="document.getElementById('priceDisplay').textContent = '₹' + Number(this.value).toLocaleString('en-IN');" step="100" type="range" value="2200"/>
+<div class="flex justify-between font-label-chip text-[0.65rem] text-mute-dark mt-1">
+<span>₹1,200</span>
+<span class="text-accent-dark">Fair Clinical Target</span>
+<span>₹3,300</span>
+</div>
+</div>
+<!-- Contact Inputs -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-eyebrow text-label-eyebrow text-accent-dark uppercase tracking-wider">QUESTION 3 &amp; 4</span>
+<span class="font-label-chip text-[0.65rem] text-mute-dark">Direct Dispatch</span>
+</div>
+<!-- Name -->
+<div class="flex flex-col gap-1">
+<label class="font-label-button text-[0.8rem] text-ink-dark" for="firstName">First Name</label>
+<input class="h-12 px-space-md rounded-full bg-night-gradient-start text-ink-dark placeholder-dim-dark font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-accent-light" id="firstName" placeholder="e.g. Arjun" required="" type="text"/>
+</div>
+<!-- WhatsApp Number with +91 Prefix -->
+<div class="flex flex-col gap-1">
+<label class="font-label-button text-[0.8rem] text-ink-dark" for="whatsapp">WhatsApp Dispatch Number</label>
+<div class="relative flex items-center">
+<span class="absolute left-4 font-label-button text-accent-dark text-sm">+91</span>
+<input class="w-full h-12 pl-14 pr-space-md rounded-full bg-night-gradient-start text-ink-dark placeholder-dim-dark font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-accent-light" id="whatsapp" pattern="[0-9]{10}" placeholder="98765 43210" required="" type="tel"/>
+</div>
+</div>
+<!-- Consent Checkbox -->
+<label class="flex items-start gap-space-xs mt-space-xs cursor-pointer select-none">
+<input checked="" class="mt-1 accent-accent-light" required="" type="checkbox"/>
+<span class="font-body-sm text-[0.72rem] text-mute-dark leading-snug">
+              I agree to receive private development ballots, batch dispatch notices and lab assays via WhatsApp. No third-party spam.
+            </span>
+</label>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-14 rounded-full bg-gradient-to-r from-secondary to-accent-light text-on-primary font-label-button text-label-button flex items-center justify-center gap-space-xs shadow-xl active:scale-95 transition-transform mt-space-xs" id="submitVoteBtn" type="submit">
+<span>Submit Vote &amp; Claim Founding Access</span>
+<span class="material-symbols-outlined text-[18px]">how_to_vote</span>
+</button>
+<!-- Dynamic Success State (Hidden by Default) -->
+<div class="hidden p-space-md rounded-lg bg-card-dark text-center flex flex-col items-center gap-space-xs animate-fade-in" id="voteSuccessFeedback">
+<div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-on-primary mb-1">
+<span class="material-symbols-outlined text-[24px]">verified</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-ink-dark font-bold">Vote Registered!</span>
+<p class="font-body-sm text-[0.8rem] text-mute-dark max-w-xs">
+            You are locked in at Founding Member pricing for Batch 001. A confirmation pass has been scheduled to your WhatsApp.
+          </p>
+</div>
+</form>
+</div>
+</section>
+</div>
+<script>
+  // Accordion Interaction for Day & Night Actives
+  document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const targetId = trigger.getAttribute('data-target');
+      const targetContent = document.getElementById(targetId);
+      const chevron = trigger.querySelector('.chevron');
+      const isOpen = !targetContent.classList.contains('hidden');
+
+      if (isOpen) {
+        targetContent.classList.add('hidden');
+        if (chevron) chevron.style.transform = 'rotate(0deg)';
+      } else {
+        targetContent.classList.remove('hidden');
+        if (chevron) chevron.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
+
+  // Stage Pill Motion Selector
+  const stageFeedbacks = {
+    '1': 'Stage 01: Sachet sealed with nitrogen barrier protection.',
+    '2': 'Stage 02: Laser-scored tear edge reveals inner active contents.',
+    '3': 'Stage 03: Precision release of 4 synchronized circadian bio-actives.',
+    '4': 'Stage 04: Zero binders. Golden Omega-3 and Shilajit resin suspended.',
+    '5': 'Stage 05: Hold position. Engineered for effortless 1-gulp morning ritual.'
+  };
+
+  document.querySelectorAll('.stage-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.stage-pill').forEach(b => {
+        b.classList.remove('bg-accent-light', 'text-on-primary');
+        b.classList.add('bg-card-dark', 'text-mute-dark');
+      });
+      btn.classList.remove('bg-card-dark', 'text-mute-dark');
+      btn.classList.add('bg-accent-light', 'text-on-primary');
+
+      const stage = btn.getAttribute('data-stage');
+      const feedbackEl = document.getElementById('stageFeedback');
+      if (feedbackEl && stageFeedbacks[stage]) {
+        feedbackEl.textContent = stageFeedbacks[stage];
+      }
+    });
+  });
+
+  // Form submission handler
+  function handleWaitlistSubmit() {
+    const submitBtn = document.getElementById('submitVoteBtn');
+    const successFeedback = document.getElementById('voteSuccessFeedback');
+    
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.classList.add('opacity-50', 'pointer-events-none');
+      submitBtn.textContent = 'Registering Ballot...';
+    }
+
+    setTimeout(() => {
+      if (submitBtn) submitBtn.classList.add('hidden');
+      if (successFeedback) {
+        successFeedback.classList.remove('hidden');
+        successFeedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }, 600);
+  }
+</script><footer class="w-full px-margin-mobile py-space-xl bg-card-light/60 flex flex-col items-center text-center mt-space-2xl"><div class="flex items-center gap-space-xs mb-space-sm"><div class="w-6 h-6 rounded-full bg-navy-deep flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[14px]">wb_twilight</span></div><span class="font-label-eyebrow text-label-eyebrow uppercase text-navy-deep tracking-widest">SUPER ROUTINE</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mb-space-lg">Circadian rhythm cellular nutrition engineered for high performers.</p><div class="flex items-center gap-space-lg mb-space-xl text-on-surface-variant"><a aria-label="Instagram" class="w-11 h-11 flex items-center justify-center rounded-full bg-surface-container hover:text-navy-deep" href="#"><span class="material-symbols-outlined text-[20px]">share</span></a><a aria-label="Science Whitepaper" class="w-11 h-11 flex items-center justify-center rounded-full bg-surface-container hover:text-navy-deep" href="#"><span class="material-symbols-outlined text-[20px]">science</span></a><a aria-label="Community" class="w-11 h-11 flex items-center justify-center rounded-full bg-surface-container hover:text-navy-deep" href="#"><span class="material-symbols-outlined text-[20px]">groups</span></a></div><p class="font-body-sm text-[0.7rem] text-outline leading-relaxed max-w-xs">These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.<br/>© 2025 Super Routine Inc. All rights reserved.</p></footer></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-bg-light/85 backdrop-blur-xl shadow-[0_-4px_24px_rgba(6,26,68,0.06)]" data-active-classes="text-accent-light font-headline-sm"><div class="flex justify-around items-center h-16 px-space-sm max-w-md mx-auto"><a aria-current="page" class="flex flex-col items-center justify-center gap-space-xs w-16 h-12 transition-colors text-accent-light font-headline-sm" data-path="overview" href="#"><span class="material-symbols-outlined text-[22px]">auto_awesome</span><span class="font-label-chip text-[0.65rem] tracking-wider">SYSTEM</span></a><a class="flex flex-col items-center justify-center gap-space-xs w-16 h-12 text-on-surface-variant transition-colors" data-path="circadian-packs" href="#"><span class="material-symbols-outlined text-[22px]">routine</span><span class="font-label-chip text-[0.65rem] tracking-wider">PACKS</span></a><a class="flex flex-col items-center justify-center gap-space-xs w-16 h-12 text-on-surface-variant transition-colors" data-path="clinical-formula" href="#"><span class="material-symbols-outlined text-[22px]">biotech</span><span class="font-label-chip text-[0.65rem] tracking-wider">SCIENCE</span></a><a class="flex flex-col items-center justify-center gap-space-xs w-16 h-12 text-on-surface-variant transition-colors" data-path="founding-waitlist" href="#"><span class="material-symbols-outlined text-[22px]">how_to_vote</span><span class="font-label-chip text-[0.65rem] tracking-wider">VOTE</span></a></div></nav></body></html>

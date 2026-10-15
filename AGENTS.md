@@ -5,13 +5,16 @@ You are building the production website for **Super Routine**, a day/night suppl
 ## Source-of-truth order (when sources disagree, higher wins)
 1. `docs/reference/screenshot-01..09.png` — how the prototype actually renders (desktop, Safari).
 2. `docs/reference/prototype.css` and `docs/reference/prototype.html` — exact CSS values and behavior. `prototype-original.html` is the same file with images embedded: use it for rendering/baselines.
-3. `docs/*.md` in this repo (PRD, design spec, content, etc.).
-4. Your own judgment — only where 1-3 are silent. State assumptions in the plan.
+3. `docs/*.md` in this repo (PRD, design spec, content, etc.), including `docs/10-STITCH-OVERRIDES.md`.
+4. `docs/reference/stitch/` (Google Stitch export + Stitch MCP) — **VISUAL/LAYOUT REFERENCE ONLY**. Never a source of copy, numbers, claims or code. Read `docs/10-STITCH-OVERRIDES.md` before using it.
+5. Your own judgment — only where 1-4 are silent. State assumptions in the plan.
 
 ## Non-negotiables
 - **Pixel-faithful.** Match the prototype's look: colors, type, radii, spacing, shadows, section order, copy. Do not "improve" the design. The only allowed deviations are listed in `docs/01-PRD.md` §Approved deviations.
 - **Do NOT use `public/images/hero-OLD-contains-errors.jpg`.** It shows "7 in 1", Biotin, 5000 IU and identical sachets, which contradict the product. It is replaced by the 3D hero. Keep it only as a reference for the composition's size/radius/shadow.
 - **Do not invent or alter copy, doses, evidence claims or cautions.** All content comes from `docs/04-CONTENT.md` and `data/supplements.json`.
+- **No invented statistics, dates, certifications, sourcing or clinical claims anywhere** (e.g. survey numbers, "ISO-17025", percentage reductions, "wild-harvested", "limited to 1,000"). The Stitch export contains many of these; they are on the reject list in `docs/10-STITCH-OVERRIDES.md`. If a design needs filler text, use the prototype's copy or ask.
+- **Never copy Stitch code into the project** (it uses the Tailwind CDN and Google Material Symbols font). Re-implement in Next.js + Tailwind v4 with local SVG icons (lucide-react or inline SVG).
 - **Payments are OFF.** Build the Razorpay module only behind `NEXT_PUBLIC_PAYMENTS_ENABLED=false` (see `docs/07-PAYMENTS-OPTIONAL.md`). Never enable it.
 - **No secrets in client code.** Service keys live in server-only env vars, validated by a Zod `env.ts`.
 - **Never store** government IDs, payment card data, or health data. The only personal data: first name, WhatsApp number, consent record, survey answers, UTM params, hashed IP.

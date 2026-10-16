@@ -83,6 +83,7 @@ test.describe("Founding-Member Waitlist Funnel", () => {
     await expect(nextBtn).toBeDisabled();
 
     // Check consent
+    await fconsent.scrollIntoViewIfNeeded();
     await fconsent.check();
     await expect(nextBtn).toBeEnabled();
     await expect(nextBtn).toContainText("Claim founding access");
@@ -120,6 +121,7 @@ test.describe("Founding-Member Waitlist Funnel", () => {
     const fconsent = page.locator("#fconsent");
     const nextBtn = page.locator("#nextBtn");
 
+    await expect(fname).toBeVisible();
     await fname.fill("Soham");
     await fconsent.check();
 

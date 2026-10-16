@@ -144,14 +144,15 @@ export async function insertWaitlistSignup(
         .eq("phone_e164", input.phoneE164)
         .single();
 
-      if (fetchErr || !existing || typeof existing.position !== "number") {
+      const existingPos = existing ? Number(existing.position) : NaN;
+      if (fetchErr || !existing || !Number.isFinite(existingPos)) {
         throw new Error("Failed to retrieve existing waitlist position");
       }
 
       return {
         ok: true,
         duplicate: true,
-        position: existing.position,
+        position: existingPos,
       };
     }
 
@@ -160,10 +161,15 @@ export async function insertWaitlistSignup(
     throw new Error(`Database insert failed: ${error.message}`);
   }
 
+  const newPos = data ? Number(data.position) : NaN;
+  if (!Number.isFinite(newPos)) {
+    throw new Error("Invalid position returned from database");
+  }
+
   return {
     ok: true,
     duplicate: false,
-    position: data.position,
+    position: newPos,
   };
 }
 

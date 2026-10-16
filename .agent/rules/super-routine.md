@@ -10,8 +10,7 @@ You are building the production website for **Super Routine**, a day/night suppl
 5. Your own judgment — only where 1-4 are silent. State assumptions in the plan.
 
 ## Non-negotiables
-- **Pixel-faithful.** Match the prototype's look: colors, type, radii, spacing, shadows, section order, copy. Do not "improve" the design. The only allowed deviations are listed in `docs/01-PRD.md` §Approved deviations.
-- **Do NOT use `public/images/hero-OLD-contains-errors.jpg`.** It shows "7 in 1", Biotin, 5000 IU and identical sachets, which contradict the product. It is replaced by the 3D hero. Keep it only as a reference for the composition's size/radius/shadow.
+- **Hero asset:** The obsolete prototype asset `public/images/hero-OLD-contains-errors.jpg` (which contained incorrect formula artwork) has been permanently removed from the repository. The hero is implemented by the interactive 3D hero (`HeroStage.tsx` / `HeroScene.tsx`) with an optimized static WebP poster (`/images/hero-poster.webp`) and CSS gradient fallback. Do not restore or reference the legacy asset.
 - **Do not invent or alter copy, doses, evidence claims or cautions.** All content comes from `docs/04-CONTENT.md` and `data/supplements.json`.
 - **No invented statistics, dates, certifications, sourcing or clinical claims anywhere** (e.g. survey numbers, "ISO-17025", percentage reductions, "wild-harvested", "limited to 1,000"). The Stitch export contains many of these; they are on the reject list in `docs/10-STITCH-OVERRIDES.md`. If a design needs filler text, use the prototype's copy or ask.
 - **Never copy Stitch code into the project** (it uses the Tailwind CDN and Google Material Symbols font). Re-implement in Next.js + Tailwind v4 with local SVG icons (lucide-react or inline SVG).

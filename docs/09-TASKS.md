@@ -4,7 +4,7 @@
 - [ ] Create Next.js (App Router, TS strict, Tailwind v4, ESLint, pnpm) in the repo root; keep `docs/`, `data/`, `AGENTS.md`, `.agent/`.
 - [ ] Add Prettier, Vitest, Playwright, Lighthouse CI configs; GitHub Actions workflow; `.env.example` → `src/lib/env.ts` (Zod).
 - [ ] Tokens + base styles in `globals.css` (`docs/03`); `next/font` Inter + Manrope; `data-theme` light/dark wrapper.
-- [ ] Convert `public/images/logo.png` to an optimized asset (SVG if traceable, else WebP at 2x); remove `hero-OLD…jpg` from the build (keep file for reference only).
+- [ ] Convert `public/images/logo.png` to an optimized asset (SVG if traceable, else WebP at 2x); obsolete `hero-OLD…jpg` permanently removed from repository.
 ⛳ Review: blank page with correct fonts, colors, base layout.
 
 ## Phase 1 — Static sections (pixel-match)

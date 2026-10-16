@@ -248,6 +248,28 @@ describe("Backend and API logic", () => {
       expect(res.position).toBe(42);
     });
 
+    it("correctly parses string-serialized bigint positions from database responses", async () => {
+      const mockClient = {
+        from: vi.fn().mockReturnValue({
+          insert: vi.fn().mockReturnValue({
+            select: vi.fn().mockReturnValue({
+              single: vi.fn().mockResolvedValue({
+                data: { id: "test-uuid", created_at: "2026-10-16T12:00:00Z", position: "105" },
+                error: null,
+              }),
+            }),
+          }),
+        }),
+      };
+
+      setMockSupabaseClient(mockClient as unknown as import("@supabase/supabase-js").SupabaseClient);
+      const res = await insertWaitlistSignup(samplePayload);
+      expect(res.ok).toBe(true);
+      expect(res.duplicate).toBe(false);
+      expect(res.position).toBe(105);
+      expect(typeof res.position).toBe("number");
+    });
+
     it("returns existing position on duplicate phone in memory store without overwriting", async () => {
       const first = await insertWaitlistSignup(samplePayload);
       expect(first.position).toBe(1);

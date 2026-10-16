@@ -6,11 +6,11 @@ import { clientEnv } from "@/lib/env";
 export const metadata = {
   title: "Privacy Policy — Super Routine",
   description:
-    "How Super Routine collects, processes, and protects your personal data during the founding waitlist.",
+    "Interim draft privacy policy describing actual data collection for the Super Routine founding waitlist.",
 };
 
 export default function PrivacyPage() {
-  const contactEmail = clientEnv.NEXT_PUBLIC_CONTACT_EMAIL || "privacy@superroutine.com";
+  const contactEmail = clientEnv.NEXT_PUBLIC_CONTACT_EMAIL;
 
   return (
     <div className="sec-l min-h-screen">
@@ -22,120 +22,133 @@ export default function PrivacyPage() {
         <h1 style={{ fontSize: "2.4rem", fontWeight: 800, marginBottom: "16px", letterSpacing: "-0.03em" }}>
           Privacy Policy
         </h1>
-        <p className="lead" style={{ fontSize: "1.1rem", color: "var(--t2)", marginBottom: "40px", lineHeight: 1.6 }}>
-          This Privacy Policy describes how Super Routine (&ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;)
-          collects, uses, and safeguards personal information when you participate in our founding-cohort waitlist
-          and interactive formulation survey.
+        <p className="lead" style={{ fontSize: "1.05rem", color: "var(--t2)", marginBottom: "32px", lineHeight: 1.6 }}>
+          <em>Notice:</em> This is an interim draft privacy statement describing the actual data collection and processing
+          for the Super Routine pre-launch waitlist. It reflects current technical implementation and has not yet undergone
+          formal legal review. A finalized commercial privacy policy will be published prior to full operations.
         </p>
 
-        <section style={{ marginBottom: "36px" }}>
-          <h2 style={{ fontSize: "1.35rem", fontWeight: 700, marginBottom: "12px" }}>
+        <section style={{ marginBottom: "32px" }}>
+          <h2 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: "10px" }}>
             1. Information We Collect
           </h2>
           <p style={{ color: "var(--t2)", lineHeight: 1.6, marginBottom: "12px" }}>
-            We strictly limit data collection to what is necessary to operate our founding waitlist and tailor upcoming
-            formulations:
+            Data collection during this pre-launch phase is limited to information submitted via the waitlist form:
           </p>
           <ul style={{ paddingLeft: "20px", color: "var(--t2)", lineHeight: 1.7, listStyleType: "disc" }}>
             <li>
-              <strong>First Name:</strong> To personalize our communications and reserve your queue slot.
+              <strong>First Name:</strong> To address you in waitlist communications and reserve your queue slot.
             </li>
             <li>
-              <strong>WhatsApp Mobile Number (+91 format):</strong> To notify you about batch openings, queue status,
-              and private founding invitations via WhatsApp.
+              <strong>WhatsApp Mobile Number (+91 format):</strong> Required to verify your queue slot and deliver batch
+              availability alerts, status updates, and private founding-cohort invitations via WhatsApp or SMS.
             </li>
             <li>
               <strong>Survey Selections:</strong> Your preferences for packaging format, custom ingredients, and target price ranges.
+              These answers are stored linked to your waitlist entry in our database to help us evaluate formulation demand for your profile.
             </li>
             <li>
-              <strong>Consent Records:</strong> Cryptographic timestamp and text version of the affirmative opt-in consent you grant.
+              <strong>Consent Record:</strong> A boolean opt-in confirmation, timestamp, and version identifier recorded when you check
+              the consent box.
             </li>
             <li>
-              <strong>Campaign Attribution (UTM):</strong> Optional query parameters (source, campaign, medium) indicating how you discovered our site.
+              <strong>Campaign Attribution (UTM):</strong> Optional query parameters (source, medium, campaign) if present in the link used to visit the site.
             </li>
             <li>
-              <strong>Salted IP Hash:</strong> A one-way, cryptographically salted SHA-256 hash of your network IP address. We use this solely for abuse prevention and sliding-window rate limiting; raw IP addresses are never saved to our database.
+              <strong>Salted IP Hash:</strong> A one-way SHA-256 hash of your network IP address combined with a private server-side salt.
+              This hash is used solely for sliding-window rate limiting to prevent form abuse; raw IP addresses are not stored in our application database.
             </li>
             <li>
-              <strong>Browser User-Agent:</strong> General technical header for responsive layout debugging and compatibility testing.
+              <strong>Browser User-Agent:</strong> Technical browser header captured with the submission for compatibility and troubleshooting.
             </li>
           </ul>
         </section>
 
-        <section style={{ marginBottom: "36px" }}>
-          <h2 style={{ fontSize: "1.35rem", fontWeight: 700, marginBottom: "12px" }}>
-            2. Data We Explicitly Do Not Collect
+        <section style={{ marginBottom: "32px" }}>
+          <h2 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: "10px" }}>
+            2. Data We Do Not Collect
           </h2>
           <p style={{ color: "var(--t2)", lineHeight: 1.6 }}>
-            Super Routine does <strong>not</strong> collect or store government identification numbers (Aadhaar, PAN,
-            passports), financial account or credit card numbers, biometric data, or medical/health diagnostic records.
+            Super Routine does not collect or store government identification numbers (such as Aadhaar, PAN, or passport numbers),
+            payment card credentials, bank accounts, biometric information, or health/medical records.
           </p>
         </section>
 
-        <section style={{ marginBottom: "36px" }}>
-          <h2 style={{ fontSize: "1.35rem", fontWeight: 700, marginBottom: "12px" }}>
-            3. Purposes of Processing &amp; Legal Basis
+        <section style={{ marginBottom: "32px" }}>
+          <h2 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: "10px" }}>
+            3. How Information Is Used
           </h2>
           <p style={{ color: "var(--t2)", lineHeight: 1.6, marginBottom: "12px" }}>
-            We process your information exclusively based on your explicit consent granted via our waitlist opt-in
-            checkbox, for the following purposes:
+            Information collected through the waitlist form is used for the following operational purposes:
           </p>
           <ul style={{ paddingLeft: "20px", color: "var(--t2)", lineHeight: 1.7, listStyleType: "disc" }}>
             <li>Allocating and maintaining your verified waitlist queue position.</li>
-            <li>Sending priority notifications and early-access invitations for our founding product release.</li>
-            <li>Aggregating anonymous survey responses to finalize batch ingredient quantities and packaging designs.</li>
-            <li>Preventing automated bot abuse and protecting service integrity.</li>
+            <li>Sending queue status updates and priority drop notifications via WhatsApp or SMS.</li>
+            <li>Evaluating aggregated and individual formulation preferences to plan production batches.</li>
+            <li>Protecting the website from automated spam, bot activity, and repeated abuse.</li>
           </ul>
         </section>
 
-        <section style={{ marginBottom: "36px" }}>
-          <h2 style={{ fontSize: "1.35rem", fontWeight: 700, marginBottom: "12px" }}>
-            4. Service Providers &amp; Data Processors
+        <section style={{ marginBottom: "32px" }}>
+          <h2 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: "10px" }}>
+            4. Infrastructure &amp; Service Providers
           </h2>
           <p style={{ color: "var(--t2)", lineHeight: 1.6, marginBottom: "12px" }}>
-            We work with trusted infrastructure providers who process data strictly under our direction:
+            The application relies on third-party cloud infrastructure to operate. Each service processes data according to its technical function:
           </p>
           <ul style={{ paddingLeft: "20px", color: "var(--t2)", lineHeight: 1.7, listStyleType: "disc" }}>
             <li>
-              <strong>Supabase Inc.:</strong> Secure PostgreSQL cloud database hosting with encrypted storage and Row Level Security isolation.
+              <strong>Supabase Inc.:</strong> Cloud PostgreSQL database hosting where waitlist entries (first name, phone number, consent record,
+              survey answers, salted IP hash, and user-agent) are stored with Row Level Security enabled.
             </li>
             <li>
-              <strong>Cloudflare Inc.:</strong> Cloudflare Turnstile for privacy-preserving verification that visitors are human without visual CAPTCHAs.
+              <strong>Cloudflare Inc.:</strong> Cloudflare Turnstile token validation to verify that form submissions come from human users without CAPTCHA challenges.
             </li>
             <li>
-              <strong>Upstash Inc.:</strong> Distributed serverless Redis for temporary rate-limiting counters.
+              <strong>Upstash Inc.:</strong> Distributed serverless Redis for temporary rate-limiting counters keyed by salted IP hashes.
             </li>
             <li>
-              <strong>Vercel Inc.:</strong> Application edge hosting and serverless compute infrastructure.
+              <strong>Vercel Inc.:</strong> Application edge hosting and serverless compute infrastructure. Standard network transmission logs
+              (such as HTTP request headers and network IP addresses) may be processed at the routing layer in accordance with standard infrastructure logging.
             </li>
           </ul>
         </section>
 
-        <section style={{ marginBottom: "36px" }}>
-          <h2 style={{ fontSize: "1.35rem", fontWeight: 700, marginBottom: "12px" }}>
-            5. Retention &amp; Erasure
+        <section style={{ marginBottom: "32px" }}>
+          <h2 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: "10px" }}>
+            5. Data Retention &amp; Removal
           </h2>
+          <p style={{ color: "var(--t2)", lineHeight: 1.6, marginBottom: "10px" }}>
+            A formal statutory retention schedule has not yet been finalized by legal counsel. Waitlist records are currently retained
+            for the period required to organize founding-cohort releases or until a participant requests removal.
+          </p>
           <p style={{ color: "var(--t2)", lineHeight: 1.6 }}>
-            We retain your waitlist contact information only for the duration required to communicate founding batch releases
-            or until you request deletion. You may withdraw your consent or request permanent deletion of your phone number
-            and survey responses at any time. Upon receiving your deletion request, your record is purged from our database.
+            Participants may request removal from the waitlist at any time. Upon receiving a verified deletion request for a phone number,
+            the corresponding entry is permanently removed from the application database via our administrative deletion capability.
           </p>
         </section>
 
-        <section style={{ marginBottom: "36px" }}>
-          <h2 style={{ fontSize: "1.35rem", fontWeight: 700, marginBottom: "12px" }}>
-            6. Your Rights &amp; Contact Information
+        <section style={{ marginBottom: "32px" }}>
+          <h2 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: "10px" }}>
+            6. Participant Inquiries &amp; Contact
           </h2>
-          <p style={{ color: "var(--t2)", lineHeight: 1.6, marginBottom: "12px" }}>
-            Under applicable data protection laws, including India&rsquo;s Digital Personal Data Protection Act framework,
-            you have the right to access, verify, correct, or request erasure of your personal data.
+          <p style={{ color: "var(--t2)", lineHeight: 1.6, marginBottom: "10px" }}>
+            Participants may inquire about their waitlist entry, request updates to their information, or request removal from the waitlist.
           </p>
-          <p style={{ color: "var(--t2)", lineHeight: 1.6 }}>
-            To exercise your rights or submit a privacy inquiry, please contact our team at:{" "}
-            <a href={`mailto:${contactEmail}`} style={{ color: "var(--accent, #3b82f6)", textDecoration: "underline" }}>
-              {contactEmail}
-            </a>
-          </p>
+          {contactEmail ? (
+            <p style={{ color: "var(--t2)", lineHeight: 1.6 }}>
+              Contact email:{" "}
+              <a href={`mailto:${contactEmail}`} style={{ color: "var(--accent, #3b82f6)", textDecoration: "underline" }}>
+                {contactEmail}
+              </a>
+            </p>
+          ) : (
+            <p style={{ color: "var(--t2)", lineHeight: 1.6 }}>
+              <em>Note:</em> A dedicated privacy mailbox has not yet been designated in the site configuration.
+              Inquiries or removal requests may be communicated through official brand channels or directed to the site operators
+              when you receive waitlist updates on WhatsApp.
+            </p>
+          )}
         </section>
       </main>
       <Footer />

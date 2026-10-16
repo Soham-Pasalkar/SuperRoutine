@@ -56,6 +56,8 @@ export function WaitlistForm() {
 
   const formCardRef = useRef<HTMLDivElement>(null);
 
+  const isHydratedRef = useRef(false);
+
   // Restore draft from sessionStorage on mount (excluding phone number)
   useEffect(() => {
     try {
@@ -76,11 +78,14 @@ export function WaitlistForm() {
       }
     } catch {
       // Ignore sessionStorage errors
+    } finally {
+      isHydratedRef.current = true;
     }
   }, []);
 
   // Save draft answers to sessionStorage (never save phone)
   useEffect(() => {
+    if (!isHydratedRef.current) return;
     try {
       const draft = {
         packaging: form.packaging,
@@ -131,7 +136,7 @@ export function WaitlistForm() {
         }
         return form.build !== null;
       case 4:
-        return form.priceTouched;
+        return form.priceMin <= form.priceMax;
       case 5: {
         const norm = normalizePhone(form.phone);
         return (
@@ -161,7 +166,30 @@ export function WaitlistForm() {
   };
 
   const handleNext = async () => {
-    if (!isStepValid(step)) return;
+    if (!isStepValid(step)) {
+      if (step === 1) {
+        setErrorMessage("Please select a packaging style to continue.");
+      } else if (step === 2) {
+        setErrorMessage("Please select your preferred supplement format.");
+      } else if (step === 3) {
+        if (form.build === "custom" && form.customItems.length === 0) {
+          setErrorMessage("Please pick at least one supplement for your custom sachet.");
+        } else {
+          setErrorMessage("Please select how your sachets should be made.");
+        }
+      } else if (step === 4) {
+        setErrorMessage("Please confirm your monthly price preference.");
+      } else if (step === 5) {
+        if (!form.firstName.trim()) {
+          setErrorMessage("Please enter your first name.");
+        } else if (!normalizePhone(form.phone).isValid) {
+          setErrorMessage("Please enter a valid 10-digit Indian WhatsApp number.");
+        } else if (!form.consent) {
+          setErrorMessage("Please agree to the consent checkbox to continue.");
+        }
+      }
+      return;
+    }
 
     if (step < 5) {
       setStep((prev) => prev + 1);
@@ -543,6 +571,7 @@ export function WaitlistForm() {
             autoComplete="given-name"
             placeholder="Shubham"
             value={form.firstName}
+            aria-required="true"
             onChange={(e) =>
               setForm((prev) => ({ ...prev, firstName: e.target.value }))
             }
@@ -558,17 +587,19 @@ export function WaitlistForm() {
             autoComplete="tel"
             inputMode="tel"
             value={form.phone}
+            aria-required="true"
             onChange={(e) =>
               setForm((prev) => ({ ...prev, phone: e.target.value }))
             }
           />
         </div>
 
-        <label className="consent">
+        <label className="consent" htmlFor="fconsent">
           <input
             type="checkbox"
             id="fconsent"
             checked={form.consent}
+            aria-required="true"
             onChange={(e) =>
               setForm((prev) => ({ ...prev, consent: e.target.checked }))
             }
@@ -656,7 +687,8 @@ export function WaitlistForm() {
             className="btn"
             id="nextBtn"
             type="button"
-            disabled={!isStepValid(step) || isSubmitting}
+            disabled={(step !== 5 && !isStepValid(step)) || isSubmitting}
+            aria-disabled={!isStepValid(step) || isSubmitting}
             onClick={handleNext}
           >
             {isSubmitting

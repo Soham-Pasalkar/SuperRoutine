@@ -1,0 +1,399 @@
+[
+  {
+    "id": "TC001",
+    "title": "Complete the founding-member waitlist signup",
+    "description": "Verifies that a visitor can progress through the full waitlist survey, submit valid details, and see a confirmation with queue position.",
+    "category": "Waitlist Survey and Registration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Select a packaging preference option"
+      },
+      {
+        "type": "action",
+        "description": "Select a supplement format option"
+      },
+      {
+        "type": "action",
+        "description": "Choose a build type or custom ingredients option"
+      },
+      {
+        "type": "action",
+        "description": "Adjust the monthly budget price slider range"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the first name field with a valid name"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the Indian WhatsApp mobile number field with a valid number"
+      },
+      {
+        "type": "action",
+        "description": "Check the consent agreement checkbox"
+      },
+      {
+        "type": "action",
+        "description": "Submit the waitlist form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a confirmation state is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the queue position is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Use the waitlist flow after exploring the product story",
+    "description": "Verifies that a visitor can inspect the product showcase first and still complete the waitlist signup in the same session.",
+    "category": "Waitlist Survey and Registration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Browse the day and night sachet showcase"
+      },
+      {
+        "type": "action",
+        "description": "Inspect the AM energizing nutrients"
+      },
+      {
+        "type": "action",
+        "description": "Inspect the PM restorative compounds"
+      },
+      {
+        "type": "action",
+        "description": "Select a packaging preference option"
+      },
+      {
+        "type": "action",
+        "description": "Select a supplement format option"
+      },
+      {
+        "type": "action",
+        "description": "Choose a build type or custom ingredients option"
+      },
+      {
+        "type": "action",
+        "description": "Adjust the monthly budget price slider range"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the first name field with a valid name"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the Indian WhatsApp mobile number field with a valid number"
+      },
+      {
+        "type": "action",
+        "description": "Check the consent agreement checkbox"
+      },
+      {
+        "type": "action",
+        "description": "Submit the waitlist form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a confirmation state is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Correct an invalid Indian WhatsApp number and submit successfully",
+    "description": "Verifies that invalid phone details are rejected with validation feedback and the visitor can correct them and complete signup.",
+    "category": "Waitlist Survey and Registration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Select a packaging preference option"
+      },
+      {
+        "type": "action",
+        "description": "Select a supplement format option"
+      },
+      {
+        "type": "action",
+        "description": "Choose a build type or custom ingredients option"
+      },
+      {
+        "type": "action",
+        "description": "Adjust the monthly budget price slider range"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the first name field with a valid name"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the Indian WhatsApp mobile number field with invalid phone details"
+      },
+      {
+        "type": "action",
+        "description": "Check the consent agreement checkbox"
+      },
+      {
+        "type": "action",
+        "description": "Submit the waitlist form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a phone validation error is visible"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the Indian WhatsApp mobile number field with a valid number"
+      },
+      {
+        "type": "action",
+        "description": "Submit the waitlist form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a confirmation state is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Require consent before waitlist submission",
+    "description": "Verifies that a visitor cannot complete the waitlist signup until the consent agreement is selected and then can submit successfully after adding it.",
+    "category": "Waitlist Survey and Registration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Select a packaging preference option"
+      },
+      {
+        "type": "action",
+        "description": "Select a supplement format option"
+      },
+      {
+        "type": "action",
+        "description": "Choose a build type or custom ingredients option"
+      },
+      {
+        "type": "action",
+        "description": "Adjust the monthly budget price slider range"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the first name field with a valid name"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the Indian WhatsApp mobile number field with a valid number"
+      },
+      {
+        "type": "action",
+        "description": "Submit the waitlist form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a consent validation error is visible"
+      },
+      {
+        "type": "action",
+        "description": "Check the consent agreement checkbox"
+      },
+      {
+        "type": "action",
+        "description": "Submit the waitlist form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a confirmation state is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Inspect the day and night sachet product showcase",
+    "description": "Verifies that a visitor can browse the core product story and inspect the AM and PM sachet details on the landing page.",
+    "category": "2-Sachet Product Showcase and Supplement Breakdown",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Browse the day and night sachet showcase"
+      },
+      {
+        "type": "action",
+        "description": "Inspect the AM energizing nutrients"
+      },
+      {
+        "type": "action",
+        "description": "Inspect the PM restorative compounds"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the day and night product showcase is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify supplement details are visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Review individual supplement dosage and active-form details",
+    "description": "Verifies that a visitor can open the product breakdown and inspect the individual supplement tiles for dosage and active-form information.",
+    "category": "2-Sachet Product Showcase and Supplement Breakdown",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the product breakdown section"
+      },
+      {
+        "type": "action",
+        "description": "Inspect an individual supplement tile"
+      },
+      {
+        "type": "action",
+        "description": "Inspect another individual supplement tile"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify supplement dosage details are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify active-form information is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC007",
+    "title": "Open the terms page from the footer",
+    "description": "Verifies that a privacy-conscious visitor can navigate from the landing page footer to the terms page and read the policy information.",
+    "category": "Navigation and Legal Information",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the footer area"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to open the terms page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the terms page is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify policy information is visible"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC008",
+    "title": "Open the privacy page from the footer",
+    "description": "Verifies that a privacy-conscious visitor can navigate from the landing page footer to the privacy page and read the policy information.",
+    "category": "Navigation and Legal Information",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the footer area"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to open the privacy page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the privacy page is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify contact and policy information is visible"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC009",
+    "title": "Read the legal pages after leaving the landing page",
+    "description": "Verifies that a visitor can open both legal pages from the footer and read each page successfully during normal browsing.",
+    "category": "Navigation and Legal Information",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the footer area"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to open the terms page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify policy information is visible"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Open the footer area"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to open the privacy page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify contact and policy information is visible"
+      }
+    ],
+    "priority": "Medium"
+  }
+]

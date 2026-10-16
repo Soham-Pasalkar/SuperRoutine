@@ -37,47 +37,66 @@ interface MemoryRow {
   utm?: Record<string, string>;
   ip_hash?: string;
   user_agent?: string;
+  position: number;
 }
 
 const memoryRows: MemoryRow[] = [];
+let memoryPositionSequence = 0;
 
 let supabaseClient: SupabaseClient | null = null;
-if (serverEnv.SUPABASE_URL && serverEnv.SUPABASE_SERVICE_ROLE_KEY) {
-  supabaseClient = createClient(
-    serverEnv.SUPABASE_URL,
-    serverEnv.SUPABASE_SERVICE_ROLE_KEY,
-    {
-      auth: {
-        persistSession: false,
-        autoRefreshToken: false,
-      },
-    }
-  );
+let mockSupabaseClient: SupabaseClient | null = null;
+
+export function setMockSupabaseClient(mock: SupabaseClient | null) {
+  if (serverEnv.NODE_ENV === "production") {
+    throw new Error("Cannot set mock Supabase client in production");
+  }
+  mockSupabaseClient = mock;
 }
 
 export function getSupabaseServerClient(): SupabaseClient | null {
+  if (serverEnv.NODE_ENV !== "production" && mockSupabaseClient) {
+    return mockSupabaseClient;
+  }
+  if (!supabaseClient && serverEnv.SUPABASE_URL && serverEnv.SUPABASE_SERVICE_ROLE_KEY) {
+    supabaseClient = createClient(
+      serverEnv.SUPABASE_URL,
+      serverEnv.SUPABASE_SERVICE_ROLE_KEY,
+      {
+        auth: {
+          persistSession: false,
+          autoRefreshToken: false,
+        },
+      }
+    );
+  }
   return supabaseClient;
 }
 
 export async function insertWaitlistSignup(
   input: WaitlistSignupInput
 ): Promise<WaitlistSignupResult> {
+  const isProduction = serverEnv.NODE_ENV === "production";
   const client = getSupabaseServerClient();
 
   if (!client) {
-    // In-memory fallback
-    const existingIndex = memoryRows.findIndex(
+    if (isProduction) {
+      throw new Error("Supabase configuration missing in production");
+    }
+
+    // In-memory fallback: strictly dev / test only
+    const existingRow = memoryRows.find(
       (r) => r.phone_e164 === input.phoneE164
     );
 
-    if (existingIndex !== -1) {
+    if (existingRow) {
       return {
         ok: true,
         duplicate: true,
-        position: existingIndex + 1,
+        position: existingRow.position,
       };
     }
 
+    memoryPositionSequence += 1;
     const row: MemoryRow = {
       id: crypto.randomUUID(),
       created_at: new Date().toISOString(),
@@ -89,17 +108,18 @@ export async function insertWaitlistSignup(
       utm: input.utm,
       ip_hash: input.ipHash,
       user_agent: input.userAgent,
+      position: memoryPositionSequence,
     };
 
     memoryRows.push(row);
     return {
       ok: true,
       duplicate: false,
-      position: memoryRows.length,
+      position: row.position,
     };
   }
 
-  // Insert into Supabase
+  // Insert into Supabase (PostgreSQL default nextval('public.waitlist_signups_position_seq') assigns monotonic position)
   const { data, error } = await client
     .from("waitlist_signups")
     .insert({
@@ -112,54 +132,48 @@ export async function insertWaitlistSignup(
       ip_hash: input.ipHash ?? null,
       user_agent: input.userAgent ?? null,
     })
-    .select("id, created_at")
+    .select("id, created_at, position")
     .single();
 
   if (error) {
-    // 23505 is PostgreSQL unique violation code
+    // 23505 is PostgreSQL unique violation code (duplicate phone_e164)
     if (error.code === "23505") {
       const { data: existing, error: fetchErr } = await client
         .from("waitlist_signups")
-        .select("created_at")
+        .select("position")
         .eq("phone_e164", input.phoneE164)
         .single();
 
-      if (fetchErr || !existing) {
+      if (fetchErr || !existing || typeof existing.position !== "number") {
         throw new Error("Failed to retrieve existing waitlist position");
       }
-
-      const { count } = await client
-        .from("waitlist_signups")
-        .select("*", { count: "exact", head: true })
-        .lte("created_at", existing.created_at);
 
       return {
         ok: true,
         duplicate: true,
-        position: count ?? 1,
+        position: existing.position,
       };
     }
 
-    console.error("Supabase insert error:", error);
+    // Sanitize log: do not log raw phone or PII
+    console.error("Database insert error code:", error.code);
     throw new Error(`Database insert failed: ${error.message}`);
   }
-
-  // Calculate position for new signup
-  const { count } = await client
-    .from("waitlist_signups")
-    .select("*", { count: "exact", head: true })
-    .lte("created_at", data.created_at);
 
   return {
     ok: true,
     duplicate: false,
-    position: count ?? 1,
+    position: data.position,
   };
 }
 
 export async function getWaitlistCount(): Promise<number> {
+  const isProduction = serverEnv.NODE_ENV === "production";
   const client = getSupabaseServerClient();
   if (!client) {
+    if (isProduction) {
+      throw new Error("Supabase configuration missing in production");
+    }
     return memoryRows.length;
   }
 
@@ -168,8 +182,8 @@ export async function getWaitlistCount(): Promise<number> {
     .select("*", { count: "exact", head: true });
 
   if (error) {
-    console.error("Supabase count error:", error);
-    return 0;
+    console.error("Supabase count query error code:", error.code);
+    throw new Error(`Failed to count waitlist signups: ${error.message}`);
   }
 
   return count ?? 0;
@@ -203,4 +217,5 @@ export async function deleteWaitlistSignupByPhone(
 
 export function resetInMemoryWaitlist() {
   memoryRows.length = 0;
+  memoryPositionSequence = 0;
 }

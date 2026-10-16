@@ -17,9 +17,22 @@ export function extractIp(headers: Headers): string {
 }
 
 export function hashIp(ip: string): string {
-  const salt = serverEnv.IP_HASH_SALT || "default-dev-salt-change-in-production";
+  const isProduction = serverEnv.NODE_ENV === "production";
+  const salt = serverEnv.IP_HASH_SALT;
+  const weakSalts = [
+    "default-dev-salt-change-in-production",
+    "change-me",
+    "dev-salt",
+    "salt",
+  ];
+
+  if (isProduction && (!salt || weakSalts.includes(salt) || salt.length < 16)) {
+    throw new Error("Strong IP_HASH_SALT must be configured in production");
+  }
+
+  const effectiveSalt = salt || "default-dev-salt-change-in-production";
   return crypto
     .createHash("sha256")
-    .update(ip + salt)
+    .update(ip + effectiveSalt)
     .digest("hex");
 }

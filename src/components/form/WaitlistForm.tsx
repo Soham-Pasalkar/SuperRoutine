@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { normalizePhone } from "@/lib/phone";
 import { FormSvgDefs } from "./FormSvgDefs";
 import { PriceSlider } from "./PriceSlider";
+import { TurnstileWidget } from "./TurnstileWidget";
 
 const CUSTOM_SUPPLEMENT_ITEMS = [
   "Zinc Picolinate",
@@ -47,6 +48,8 @@ const INITIAL_FORM_STATE: FormState = {
 export function WaitlistForm() {
   const [step, setStep] = useState<number>(1);
   const [form, setForm] = useState<FormState>(INITIAL_FORM_STATE);
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileResetSignal, setTurnstileResetSignal] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [submissionResult, setSubmissionResult] = useState<{
@@ -219,6 +222,7 @@ export function WaitlistForm() {
           source: typeof document !== "undefined" ? document.referrer || "direct" : "direct",
           page: typeof location !== "undefined" ? location.href : "",
         },
+        turnstileToken: turnstileToken || undefined,
         hp: form.hp,
       };
 
@@ -238,6 +242,9 @@ export function WaitlistForm() {
             "We could not save your answers. Check your connection and try again."
         );
         trackEvent("waitlist_error", { error: data.error, status: res.status });
+        // Reset turnstile challenge so user can obtain a fresh token on retry
+        setTurnstileResetSignal((s) => s + 1);
+        setTurnstileToken("");
         setIsSubmitting(false);
         return;
       }
@@ -266,6 +273,8 @@ export function WaitlistForm() {
         "We could not save your answers. Check your connection and try again."
       );
       trackEvent("waitlist_error", { error: "Network or client failure" });
+      setTurnstileResetSignal((s) => s + 1);
+      setTurnstileToken("");
     } finally {
       setIsSubmitting(false);
     }
@@ -608,6 +617,11 @@ export function WaitlistForm() {
             I agree to be contacted about Super Routine and to my answers being used to shape the product. We use your details only for this and never sell them.
           </span>
         </label>
+
+        <TurnstileWidget
+          onTokenChange={setTurnstileToken}
+          resetSignal={turnstileResetSignal}
+        />
       </div>
 
       {/* Step 6: Success */}

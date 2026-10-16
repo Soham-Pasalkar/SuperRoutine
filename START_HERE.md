@@ -17,8 +17,9 @@ docs/08-PERFORMANCE-QA.md  ← budgets, visual regression, e2e, launch checklist
 docs/09-TASKS.md           ← phased task list with review gates
 docs/reference/            ← prototype.html/.css, prototype-original.html, 9 screenshots
 public/images/logo.png     ← logo extracted from the prototype
-public/images/hero-OLD-contains-errors.jpg  ← DO NOT SHIP (wrong formulas)
+public/images/hero-poster.webp ← LCP poster for 3D hero stage (erroneous legacy hero asset removed)
 supabase/migrations/0001_waitlist.sql
+supabase/migrations/0002_waitlist_position_sequence.sql
 ```
 
 ## 1. Set up

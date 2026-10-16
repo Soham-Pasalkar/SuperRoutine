@@ -27,10 +27,49 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // In production, Turnstile token is mandatory
+    const isProduction = process.env.NODE_ENV === "production";
+    if (
+      isProduction &&
+      (!parsed.data.turnstileToken || !parsed.data.turnstileToken.trim())
+    ) {
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "Verification check required. Please complete the security challenge.",
+        },
+        { status: 400 }
+      );
+    }
+
     // 2. Rate-limit by hashed IP
     const clientIp = extractIp(request.headers);
-    const ipHash = hashIp(clientIp);
-    const rateLimit = await checkRateLimit(ipHash);
+    let ipHash: string;
+    try {
+      ipHash = hashIp(clientIp);
+    } catch {
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "Service temporarily unavailable. Please try again later.",
+        },
+        { status: 500 }
+      );
+    }
+
+    let rateLimit;
+    try {
+      rateLimit = await checkRateLimit(ipHash);
+    } catch {
+      // In production, rate limit service failures fail safely with 500
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "Service temporarily unavailable. Please try again later.",
+        },
+        { status: 500 }
+      );
+    }
 
     if (!rateLimit.success) {
       return NextResponse.json(
@@ -66,15 +105,26 @@ export async function POST(request: NextRequest) {
 
     // 4. Insert into database (handles duplicate phone by returning existing position)
     const userAgent = request.headers.get("user-agent") || undefined;
-    const result = await insertWaitlistSignup({
-      firstName: parsed.data.firstName,
-      phoneE164: parsed.data.phone,
-      consent: parsed.data.consent,
-      answers: parsed.data.answers,
-      utm: parsed.data.utm,
-      ipHash,
-      userAgent,
-    });
+    let result;
+    try {
+      result = await insertWaitlistSignup({
+        firstName: parsed.data.firstName,
+        phoneE164: parsed.data.phone,
+        consent: parsed.data.consent,
+        answers: parsed.data.answers,
+        utm: parsed.data.utm,
+        ipHash,
+        userAgent,
+      });
+    } catch {
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "We could not save your answers. Check your connection and try again.",
+        },
+        { status: 500 }
+      );
+    }
 
     if (result.duplicate) {
       return NextResponse.json(
@@ -87,8 +137,9 @@ export async function POST(request: NextRequest) {
       { ok: true, position: result.position },
       { status: 201 }
     );
-  } catch (err) {
-    console.error("Unhandled waitlist submission error:", err);
+  } catch {
+    // Sanitize log: do not log payload, tokens, or PII
+    console.error("Unhandled waitlist submission error");
     return NextResponse.json(
       {
         ok: false,

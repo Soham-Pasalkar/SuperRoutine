@@ -2,10 +2,27 @@ import React from "react";
 import { Header } from "@/components/header/Header";
 import { Footer } from "@/components/sections/Footer";
 
-export const metadata = {
-  title: "Terms of Service — Super Routine",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
   description:
     "Interim draft terms governing participation in the Super Routine founding waitlist and preference survey.",
+  alternates: {
+    canonical: "/terms",
+  },
+  openGraph: {
+    title: "Terms of Service — Super Routine",
+    description:
+      "Interim draft terms governing participation in the Super Routine founding waitlist and preference survey.",
+    url: "/terms",
+  },
+  twitter: {
+    card: "summary",
+    title: "Terms of Service — Super Routine",
+    description:
+      "Interim draft terms governing participation in the Super Routine founding waitlist and preference survey.",
+  },
 };
 
 export default function TermsPage() {

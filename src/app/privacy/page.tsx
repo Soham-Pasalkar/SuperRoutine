@@ -3,10 +3,27 @@ import { Header } from "@/components/header/Header";
 import { Footer } from "@/components/sections/Footer";
 import { clientEnv } from "@/lib/env";
 
-export const metadata = {
-  title: "Privacy Policy — Super Routine",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
   description:
     "Interim draft privacy policy describing actual data collection for the Super Routine founding waitlist.",
+  alternates: {
+    canonical: "/privacy",
+  },
+  openGraph: {
+    title: "Privacy Policy — Super Routine",
+    description:
+      "Interim draft privacy policy describing actual data collection for the Super Routine founding waitlist.",
+    url: "/privacy",
+  },
+  twitter: {
+    card: "summary",
+    title: "Privacy Policy — Super Routine",
+    description:
+      "Interim draft privacy policy describing actual data collection for the Super Routine founding waitlist.",
+  },
 };
 
 export default function PrivacyPage() {

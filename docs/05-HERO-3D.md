@@ -1,6 +1,6 @@
 # 05 — Hero 3D Animation (the rotating pill)
 
-Replaces `hero-OLD-contains-errors.jpg`. Same footprint as the old image: 3:2 card, `border-radius: 30px`, same shadow, same position under the CTA. Text and CTA stay plain HTML.
+Replaces the prototype hero artwork (historical reference: previously named `hero-OLD-contains-errors.jpg`, now permanently deleted). Same footprint as the original prototype card: 3:2 card, `border-radius: 30px`, same shadow, same position under the CTA. Text and CTA stay plain HTML.
 
 ## Visual concept
 A large, glossy **two-tone capsule** (left half = Day sky-blue `#A9CBEF→#CFE2F6`, right half = Night navy `#0B1226→#16244A`, thin silver seam ring) floating in a soft sky-blue gradient stage with a soft contact shadow below. Slow rotation, gentle float, subtle pointer parallax. It communicates "Day + Night" without any text.

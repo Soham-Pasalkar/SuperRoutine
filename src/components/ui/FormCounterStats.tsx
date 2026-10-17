@@ -8,8 +8,8 @@ export function FormCounterStats() {
 
   return (
     <div className="stats">
-      <div id="joinedStat" hidden={!isVisible}>
-        Joined <b id="joinedNum">{count}</b>
+      <div id="joinedStat" hidden={!isVisible || count === null}>
+        Joined <b id="joinedNum">{count ?? ""}</b>
       </div>
     </div>
   );

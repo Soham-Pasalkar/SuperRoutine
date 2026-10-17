@@ -1,14 +1,26 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import { POST } from "@/app/api/waitlist/route";
 import { GET } from "@/app/api/waitlist/count/route";
 import { NextRequest } from "next/server";
-import { resetMemoryRateLimiter } from "@/lib/ratelimit";
-import { resetInMemoryWaitlist } from "@/lib/supabase-server";
+import { resetMemoryRateLimiter, setMockRateLimiter } from "@/lib/ratelimit";
+import {
+  resetInMemoryWaitlist,
+  setMockSupabaseClient,
+} from "@/lib/supabase-server";
 
 describe("Waitlist API Routes", () => {
   beforeEach(() => {
     resetMemoryRateLimiter();
     resetInMemoryWaitlist();
+    setMockRateLimiter(null);
+    setMockSupabaseClient(null);
+    vi.restoreAllMocks();
+  });
+
+  afterEach(() => {
+    setMockRateLimiter(null);
+    setMockSupabaseClient(null);
+    vi.restoreAllMocks();
   });
 
   const validPayload = {
@@ -23,6 +35,7 @@ describe("Waitlist API Routes", () => {
       priceMin: 1200,
       priceMax: 3300,
     },
+    turnstileToken: "test-token",
   };
 
   it("POST /api/waitlist successfully registers a founding member", async () => {
@@ -43,7 +56,69 @@ describe("Waitlist API Routes", () => {
     const countRes = await GET();
     expect(countRes.status).toBe(200);
     const countData = await countRes.json();
+    expect(countData.ok).toBe(true);
     expect(countData.count).toBe(1);
+  });
+
+  it("GET /api/waitlist/count returns ok: true with genuine count of zero when empty", async () => {
+    const res = await GET();
+    expect(res.status).toBe(200);
+    const data = await res.json();
+    expect(data.ok).toBe(true);
+    expect(data.count).toBe(0);
+  });
+
+  it("GET /api/waitlist/count returns 500 with ok: false when database query fails, never returning fake zero", async () => {
+    const mockClient = {
+      from: vi.fn().mockReturnValue({
+        select: vi.fn().mockResolvedValue({
+          count: null,
+          error: { code: "50000", message: "Database down" },
+        }),
+      }),
+    };
+    setMockSupabaseClient(mockClient as unknown as import("@supabase/supabase-js").SupabaseClient);
+
+    const res = await GET();
+    expect(res.status).toBe(500);
+    const data = await res.json();
+    expect(data.ok).toBe(false);
+    expect(data.count).toBeUndefined();
+    expect(data.error).toBe("Failed to retrieve waitlist count");
+  });
+
+  it("POST /api/waitlist handles concurrent signups with unique monotonic positions", async () => {
+    const reqA = new NextRequest("http://localhost:3000/api/waitlist", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...validPayload,
+        firstName: "Concurrent User A",
+        phone: "+919876543221",
+      }),
+    });
+
+    const reqB = new NextRequest("http://localhost:3000/api/waitlist", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...validPayload,
+        firstName: "Concurrent User B",
+        phone: "+919876543222",
+      }),
+    });
+
+    const [resA, resB] = await Promise.all([POST(reqA), POST(reqB)]);
+    expect(resA.status).toBe(201);
+    expect(resB.status).toBe(201);
+
+    const dataA = await resA.json();
+    const dataB = await resB.json();
+
+    expect(dataA.ok).toBe(true);
+    expect(dataB.ok).toBe(true);
+    expect(dataA.position).not.toBe(dataB.position);
+    expect([dataA.position, dataB.position].sort()).toEqual([1, 2]);
   });
 
   it("POST /api/waitlist handles duplicate phone gracefully with existing position", async () => {
@@ -102,5 +177,54 @@ describe("Waitlist API Routes", () => {
     expect(res.status).toBe(400);
     const data = await res.json();
     expect(data.ok).toBe(false);
+  });
+
+  it("POST /api/waitlist returns safe 500 when rate limiting service fails", async () => {
+    setMockRateLimiter({
+      limit: async () => {
+        throw new Error("Upstash rate limit unreachable");
+      },
+    });
+
+    const req = new NextRequest("http://localhost:3000/api/waitlist", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(validPayload),
+    });
+
+    const res = await POST(req);
+    expect(res.status).toBe(500);
+    const data = await res.json();
+    expect(data.ok).toBe(false);
+    expect(data.error).toBe("Service temporarily unavailable. Please try again later.");
+  });
+
+  it("POST /api/waitlist returns safe 500 and never reports success on database insert failure", async () => {
+    const mockClient = {
+      from: vi.fn().mockReturnValue({
+        insert: vi.fn().mockReturnValue({
+          select: vi.fn().mockReturnValue({
+            single: vi.fn().mockResolvedValue({
+              data: null,
+              error: { code: "50000", message: "Database down" },
+            }),
+          }),
+        }),
+      }),
+    };
+    setMockSupabaseClient(mockClient as unknown as import("@supabase/supabase-js").SupabaseClient);
+
+    const req = new NextRequest("http://localhost:3000/api/waitlist", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(validPayload),
+    });
+
+    const res = await POST(req);
+    expect(res.status).toBe(500);
+    const data = await res.json();
+    expect(data.ok).toBe(false);
+    expect(data.position).toBeUndefined();
+    expect(data.error).toBe("We could not save your answers. Check your connection and try again.");
   });
 });

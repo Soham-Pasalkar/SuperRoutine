@@ -17,9 +17,49 @@ const manrope = Manrope({
   weight: ["600", "700", "800"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://superroutine.in";
+
 export const metadata: Metadata = {
-  title: SITE_METADATA.title,
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: SITE_METADATA.title,
+    template: "%s | Super Routine",
+  },
   description: SITE_METADATA.description,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: SITE_METADATA.title,
+    description: SITE_METADATA.description,
+    url: "/",
+    siteName: "Super Routine",
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/images/logo.png",
+        width: 700,
+        height: 417,
+        alt: "Super Routine",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: SITE_METADATA.title,
+    description: SITE_METADATA.description,
+    images: ["/images/logo.png"],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
 };
 
 export const viewport: Viewport = {

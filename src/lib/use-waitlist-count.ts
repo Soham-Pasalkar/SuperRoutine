@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 
 export function useWaitlistCount(minThreshold = 25) {
-  const [count, setCount] = useState<number>(0);
+  const [count, setCount] = useState<number | null>(null);
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -12,14 +13,28 @@ export function useWaitlistCount(minThreshold = 25) {
     async function fetchCount() {
       try {
         const res = await fetch("/api/waitlist/count");
-        if (res.ok) {
-          const data = await res.json();
-          if (isMounted && typeof data.count === "number") {
+        if (!res.ok) {
+          if (isMounted) {
+            setIsError(true);
+            setCount(null);
+          }
+          return;
+        }
+        const data = await res.json();
+        if (isMounted) {
+          if (data.ok && typeof data.count === "number") {
             setCount(data.count);
+            setIsError(false);
+          } else {
+            setIsError(true);
+            setCount(null);
           }
         }
       } catch {
-        // Silently fail, keep count 0
+        if (isMounted) {
+          setIsError(true);
+          setCount(null);
+        }
       } finally {
         if (isMounted) setHasLoaded(true);
       }
@@ -35,6 +50,7 @@ export function useWaitlistCount(minThreshold = 25) {
   return {
     count,
     hasLoaded,
-    isVisible: count >= minThreshold,
+    isError,
+    isVisible: !isError && count !== null && count >= minThreshold,
   };
 }

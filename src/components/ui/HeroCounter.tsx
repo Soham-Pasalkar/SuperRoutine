@@ -6,7 +6,7 @@ import { useWaitlistCount } from "@/lib/use-waitlist-count";
 export function HeroCounter() {
   const { count, isVisible } = useWaitlistCount();
 
-  if (!isVisible) {
+  if (!isVisible || count === null) {
     return <div id="counterWrap" />;
   }
 

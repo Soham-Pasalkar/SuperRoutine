@@ -72,17 +72,44 @@ if (serverEnv.UPSTASH_REDIS_REST_URL && serverEnv.UPSTASH_REDIS_REST_TOKEN) {
 
 const memoryLimiter = new MemoryRateLimiter(MAX_REQUESTS, WINDOW_MS);
 
+let mockRateLimiter: { limit: (id: string) => Promise<RateLimitResult> } | null = null;
+
+export function setMockRateLimiter(
+  mock: { limit: (id: string) => Promise<RateLimitResult> } | null
+) {
+  if (serverEnv.NODE_ENV === "production") {
+    throw new Error("Cannot set mock rate limiter in production");
+  }
+  mockRateLimiter = mock;
+}
+
 export async function checkRateLimit(identifier: string): Promise<RateLimitResult> {
-  if (upstashLimiter) {
-    const res = await upstashLimiter.limit(identifier);
-    return {
-      success: res.success,
-      limit: res.limit,
-      remaining: res.remaining,
-      reset: res.reset,
-    };
+  const isProduction = serverEnv.NODE_ENV === "production";
+
+  if (!isProduction && mockRateLimiter) {
+    return mockRateLimiter.limit(identifier);
   }
 
+  if (upstashLimiter) {
+    try {
+      const res = await upstashLimiter.limit(identifier);
+      return {
+        success: res.success,
+        limit: res.limit,
+        remaining: res.remaining,
+        reset: res.reset,
+      };
+    } catch {
+      console.error("Upstash rate limit request failed");
+      throw new Error("Rate limiting service failure");
+    }
+  }
+
+  if (isProduction) {
+    throw new Error("Rate limiting service not configured in production");
+  }
+
+  // Explicit development / test fallback
   return memoryLimiter.limit(identifier);
 }
 
